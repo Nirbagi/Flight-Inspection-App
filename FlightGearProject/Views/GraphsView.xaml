@@ -3,10 +3,54 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:oxy="http://oxyplot.org/wpf"
              xmlns:local="clr-namespace:FlightGearProject.Views"
              mc:Ignorable="d" Background="Bisque"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="230" d:DesignWidth="485">
     <Grid>
-            
+        <Canvas x:Name="Graphs" Height="230" Width="485" >
+            <!--oxyplot graphs:-->
+
+            <Grid Height="230" Width="485" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="10" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="5" />
+                </Grid.RowDefinitions>
+
+
+                <!--choose data to investigate-->
+
+                <ListBox x:Name="Feature_List" ItemsSource ="{Binding features}" SelectedItem="{Binding Path=vm_data, Mode=OneWayToSource}"
+                         Grid.RowSpan ="3" Grid.Column="1" Grid.Row="1" 
+                         MinWidth="200" MinHeight="220"  />
+
+
+                <!-- the graph of the chosen feature-->
+
+                <oxy:Plot Grid.Column="3" Grid.Row="1" Title="{Binding vm_data}" TitleFontSize="10" MinHeight="107.5" MinWidth="250">
+                    <oxy:Plot.Series>
+                        <oxy:LineSeries ItemsSource="{Binding dataPoints}"/>
+                    </oxy:Plot.Series>
+                </oxy:Plot>
+
+                <!--the graph of the correlated feature-->
+
+                <oxy:Plot Grid.Column="3" Grid.Row="3" Title="{Binding vm_cordata}" TitleFontSize="10" MinHeight="107.5" MinWidth="250">
+                    <oxy:Plot.Series>
+                        <oxy:LineSeries ItemsSource="{Binding corDataPoints}"/>
+                    </oxy:Plot.Series>
+                </oxy:Plot>
+            </Grid>
+        </Canvas>
     </Grid>
 </UserControl>

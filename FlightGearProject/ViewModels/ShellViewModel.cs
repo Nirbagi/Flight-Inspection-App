@@ -168,7 +168,7 @@ namespace FlightGearProject.ViewModels
         }
 
         public void LoadSetup()
-        {            
+        {                      
             if (SetupAlreadyOpen == false) {
                 // Disable Joystick UC
                 JoystickAlreadyOpen = false;
