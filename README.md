@@ -17,12 +17,12 @@ It allows the pilot to control the speed of a movie play (slower or faster) and 
 
 ## Special features
 
-•	Ability to watch the data in several different views, at any given time during the flight.
-•	Ability to present the flight movie at a variable speed
-•	The ability to present the aircraft joystick along with other metrics
-•	Check correlations from other flights
-•	Load different algorithms to perform in-depth research
-•	A user interface that displays only the necessary information at a time, thus preventing overloading of the researcher.
+-	Ability to watch the data in several different views, at any given time during the flight.
+-	Ability to present the flight movie at a variable speed
+-	The ability to present the aircraft joystick along with other metrics
+-	Check correlations from other flights
+-	Load different algorithms to perform in-depth research
+-	A user interface that displays only the necessary information at a time, thus preventing overloading of the researcher.
 
 
 
