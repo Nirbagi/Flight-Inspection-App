@@ -145,5 +145,16 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Stop.jpg" />
+    <Resource Include="Resource\Pause.jpg" />
+    <Resource Include="Resource\Backward.jpg" />
+    <Resource Include="Resource\Forward.jpg" />
+    <Resource Include="Resource\SkipForward.jpg" />
+    <Resource Include="Resource\Play.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\SkipBackward.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
