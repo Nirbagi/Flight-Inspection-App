@@ -2,10 +2,9 @@
 
 
 > First milestone
-> 1) Using the .NET Framework, OxyPlot and ???? to create the GUI interface.
+> 1) Using the .NET Framework, OxyPlot and Caliburn.Micro to create the GUI interface.
 > 2) Using MVVM architecture in a multi-threaded environment.
-> 3)
-> 4) Implementing a TCP Client to send the data to FlightGear.
+> 3) Implementing a TCP Client to send the data to FlightGear.
 
 
 
