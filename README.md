@@ -54,8 +54,10 @@ I think you should use an
 
 ## Operating instructions
 - [x] In the home screen, write down the flightGear Server IP, FlightGear Server Port and CSV path
-![image](https://user-images.githubusercontent.com/73064092/114318253-f52dc200-9b14-11eb-98ee-7d2336b74fa9.png)
-- [x] Make sure that flightgear application and visual studio 2019 are installed successfully.
+![image](https://user-images.githubusercontent.com/73064092/114318413-738a6400-9b15-11eb-9977-850716142989.png)
+- [x] *If one of the data entered is incorrect, the above alert window will be displayed*
+![Uploading image.png…]()
+
 
 - [x] ניסוי
 - [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
