@@ -23,7 +23,10 @@ _You **can** combine them_
 As Kanye West said:
 
 > We're living the future so
-> the present is our past.
+> 1) Using the .NET Framework, OxyPlot and ???? to create the GUI interface.
+2) Using MVVM architecture in a multi-threaded environment.
+3)
+4) Implementing a TCP Client to send the data to FlightGear.
 
 
 I think you should use an
