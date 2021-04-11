@@ -44,12 +44,13 @@ As Kanye West said:
 I think you should use an
 `<addr>` element here instead.
 
+## Preliminary requirements:
+- [x] Make sure that flightgear application and visual studio 2019 are installed successfully.
 
+
+- [ ] this is an incomplete item
 - [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
 - [x] list syntax required (any unordered or ordered list supported)
-- [x] this is a complete item
-- [ ] this is an incomplete item
-
 
 
 
