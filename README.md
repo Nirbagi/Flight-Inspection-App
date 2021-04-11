@@ -53,7 +53,7 @@ I think you should use an
 //Image
 
 2. Then click on the "Fly" button in the application
-3.Open visual studio 2019 with the attached code and run it.
+3. Open visual studio 2019 with the attached code and run it.
 
 
 - [x] ניסוי
