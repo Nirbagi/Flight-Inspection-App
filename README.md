@@ -53,12 +53,19 @@ I think you should use an
 3. Open visual studio 2019 with the attached code and run it.
 
 ## Operating instructions
+- [x] To configure the client, click on the `<Setup>` button
+![image](https://user-images.githubusercontent.com/73064092/114318547-2955b280-9b16-11eb-94fe-65c7e39b954a.png)
 - [x] In the home screen, write down the flightGear Server IP, FlightGear Server Port and CSV path
 ![image](https://user-images.githubusercontent.com/73064092/114318413-738a6400-9b15-11eb-9977-850716142989.png)
 - [x] *If one of the data entered is incorrect, the above alert window will be displayed*
 ![image](https://user-images.githubusercontent.com/73064092/114318467-c237fe00-9b15-11eb-9450-15d68172d048.png)
-- [x] To configure the client, click on the `<Setup>` button
-![image](https://user-images.githubusercontent.com/73064092/114318547-2955b280-9b16-11eb-94fe-65c7e39b954a.png)
+- [x] After initial setup, the option to start the simulation opens
+![image](https://user-images.githubusercontent.com/73064092/114318666-bc8ee800-9b16-11eb-92c0-be2566e0b64f.png)
+- [x] Then starting the simulation, all the other options for displaying all the information open up
+![image](https://user-images.githubusercontent.com/73064092/114318744-1a233480-9b17-11eb-9f6e-79eaf4a72d4f.png)
+- [x] When all information is open
+![image](https://user-images.githubusercontent.com/73064092/114318760-2f985e80-9b17-11eb-8031-53f206e2394c.png)
+
 
 
 - [x] ניסוי
