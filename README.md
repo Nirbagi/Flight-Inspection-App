@@ -46,9 +46,17 @@ I think you should use an
 
 ## Preliminary requirements:
 - [x] Make sure that flightgear application and visual studio 2019 are installed successfully.
+## Instructions for running the software:
+
+1. Open the flightgear application, with the following settings
+
+//Image
+
+2. Then click on the "Fly" button in the application
+3.Open visual studio 2019 with the attached code and run it.
 
 
-- [ ] this is an incomplete item
+- [x] ניסוי
 - [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
 - [x] list syntax required (any unordered or ordered list supported)
 
