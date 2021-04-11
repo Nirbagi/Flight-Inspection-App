@@ -56,7 +56,7 @@ I think you should use an
 - [x] In the home screen, write down the flightGear Server IP, FlightGear Server Port and CSV path
 ![image](https://user-images.githubusercontent.com/73064092/114318413-738a6400-9b15-11eb-9977-850716142989.png)
 - [x] *If one of the data entered is incorrect, the above alert window will be displayed*
-![Uploading image.png…]()
+![image](https://user-images.githubusercontent.com/73064092/114318467-c237fe00-9b15-11eb-9450-15d68172d048.png)
 
 
 - [x] ניסוי
