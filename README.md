@@ -46,16 +46,16 @@ I think you should use an
 
 ## Preliminary requirements
 - [x] Make sure that flightgear application and visual studio 2019 are installed successfully.
-## Instructions for running the software:
-
+## Instructions for running the software: OR setup ??????????????????????????????????????????????
 1. Open the flightgear application, with the following settings:
-
 ![image](https://user-images.githubusercontent.com/73064092/114318178-87819600-9b14-11eb-9cde-430bbafa9edf.png)
-
-
 2. Then click on the "Fly" button in the application
 3. Open visual studio 2019 with the attached code and run it.
 
+## Operating instructions
+- [x] In the home screen, write down the flightGear Server IP, FlightGear Server Port and CSV path
+![image](https://user-images.githubusercontent.com/73064092/114318253-f52dc200-9b14-11eb-98ee-7d2336b74fa9.png)
+- [x] Make sure that flightgear application and visual studio 2019 are installed successfully.
 
 - [x] ניסוי
 - [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
