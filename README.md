@@ -2,23 +2,23 @@
 
 
 > First milestone
-> 1) Using the .NET Framework, OxyPlot and Caliburn.Micro to create the GUI interface.
+> 1) Using the .NET Framework, OxyPlot and Caliburn.Micro Framework to create the GUI interface.
 > 2) Using MVVM architecture in a multi-threaded environment.
 > 3) Implementing a TCP Client to send the data to FlightGear.
 
 
 ## Project Description
-This is an application that allows to display flight data on a dedicated simulator (FG) and perform n data investigation.
+This is an application that allows to display flight data on a dedicated simulator (FlightGear) and perform n data investigation.
 The application is designed for flight researchers, Air Force pilots or any pilot who wants to improve himself for future flights. 
-The application presents the pilot all of his flight's data in various display forms, as a post flight process.
-It allows the pilot to control the speed of a movie play (slower or faster) and perform an in-depth analysis of data relative to the pilot's other flights: Steering position, speed, direction of flight, altitude, yaw and roll indices, pitch, perform corrosion relative to other flights, load algorithms that study the information, etc ....
+The application presents the pilot all of the recorded flight's data in various display forms, as a post flight process.
+It allows the pilot to control the speed of the playback (slower or faster) and perform an in-depth analysis of data relative to the pilot's other flights: Steering position, speed, direction of flight, altitude, yaw and roll indices, pitch, perform corrosion relative to other flights, load algorithms that study the information, etc ....
 
 
 
 ## Special features
 
 -	Ability to watch the data in several different views, at any given time during the flight.
--	Ability to present the flight movie at a variable speed
+-	Ability to present the flight playback at a variable speed
 -	The ability to present the aircraft joystick along with other metrics
 -	Check correlations from other flights
 -	Load different algorithms to perform in-depth research
