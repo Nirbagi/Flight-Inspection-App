@@ -44,7 +44,7 @@ As Kanye West said:
 I think you should use an
 `<addr>` element here instead.
 
-## Preliminary requirements:
+## Preliminary requirements
 - [x] Make sure that flightgear application and visual studio 2019 are installed successfully.
 ## Instructions for running the software:
 
