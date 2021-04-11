@@ -13,7 +13,7 @@
 
 
 
-## Project Description: <h2> 
+## Project Description:
 This is an application that allows to display flight data on a dedicated simulator (FG) and perform n data investigation.
 The application is designed for flight researchers, Air Force pilots or any pilot who wants to improve himself for future flights. 
 The application presents the pilot all of his flight's data in various display forms, as a post flight process.
