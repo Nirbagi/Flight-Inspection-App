@@ -50,7 +50,8 @@ I think you should use an
 
 1. Open the flightgear application, with the following settings
 
-//Image
+![image](https://user-images.githubusercontent.com/73064092/114318178-87819600-9b14-11eb-9cde-430bbafa9edf.png)
+
 
 2. Then click on the "Fly" button in the application
 3. Open visual studio 2019 with the attached code and run it.
