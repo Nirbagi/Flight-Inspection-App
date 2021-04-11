@@ -26,24 +26,6 @@ It allows the pilot to control the speed of a movie play (slower or faster) and 
 
 
 
-
-###### This is an <h6> tag
-
-*This text will be italic*
-_This will also be italic_
-
-**This text will be bold**
-__This will also be bold__
-
-_You **can** combine them_
-
-As Kanye West said:
-
-
-
-I think you should use an
-`<addr>` element here instead.
-
 ## Preliminary requirements
 - [x] Make sure that flightgear application and visual studio 2019 are installed successfully.
 ## Setup instructions OR Instructions for running the software
@@ -66,12 +48,34 @@ I think you should use an
 - [x] When all information is open
 ![image](https://user-images.githubusercontent.com/73064092/114318760-2f985e80-9b17-11eb-8031-53f206e2394c.png)
 
+:world_map:
+
+:compass:	
+
+
 
 
 - [x] ניסוי
 - [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
 - [x] list syntax required (any unordered or ordered list supported)
 
+`<addr>` element here instead.
+
+
+
+###### This is an <h6> tag
+
+*This text will be italic*
+_This will also be italic_
+
+**This text will be bold**
+__This will also be bold__
+
+_You **can** combine them_
+
+As Kanye West said:
+
+I think you should use an
 `<addr>` element here instead.
 
 
