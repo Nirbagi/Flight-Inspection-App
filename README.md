@@ -46,7 +46,7 @@ I think you should use an
 
 ## Preliminary requirements
 - [x] Make sure that flightgear application and visual studio 2019 are installed successfully.
-## Instructions for running the software: OR setup ??????????????????????????????????????????????
+## Setup instructions OR Instructions for running the software
 1. Open the flightgear application, with the following settings:
 ![image](https://user-images.githubusercontent.com/73064092/114318178-87819600-9b14-11eb-9cde-430bbafa9edf.png)
 2. Then click on the "Fly" button in the application
