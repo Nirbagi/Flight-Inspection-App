@@ -1,7 +1,7 @@
 # :flight_departure:	Flight-Inspection-App :flight_arrival:	
 
 
-> We're living the future so
+> First milestone
 > 1) Using the .NET Framework, OxyPlot and ???? to create the GUI interface.
 > 2) Using MVVM architecture in a multi-threaded environment.
 > 3)
