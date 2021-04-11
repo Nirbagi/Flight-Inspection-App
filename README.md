@@ -48,9 +48,9 @@ It allows the pilot to control the speed of the playback (slower or faster) and 
 - [x] When all information is open
 ![image](https://user-images.githubusercontent.com/73064092/114318760-2f985e80-9b17-11eb-8031-53f206e2394c.png)
 
-:world_map:
+:world_map:  :compass:	
 
-:compass:	
+
 
 
 
@@ -82,3 +82,4 @@ I think you should use an
 :world_map:
 
 :compass:	
+
