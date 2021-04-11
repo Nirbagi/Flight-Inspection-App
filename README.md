@@ -57,7 +57,7 @@ I think you should use an
 ![image](https://user-images.githubusercontent.com/73064092/114318413-738a6400-9b15-11eb-9977-850716142989.png)
 - [x] *If one of the data entered is incorrect, the above alert window will be displayed*
 ![image](https://user-images.githubusercontent.com/73064092/114318467-c237fe00-9b15-11eb-9450-15d68172d048.png)
-- [x] To configure the client, click on the e<<<>>>> button
+- [x] To configure the client, click on the `<Setup>` button
 ![image](https://user-images.githubusercontent.com/73064092/114318547-2955b280-9b16-11eb-94fe-65c7e39b954a.png)
 
 
@@ -65,6 +65,7 @@ I think you should use an
 - [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
 - [x] list syntax required (any unordered or ordered list supported)
 
+`<addr>` element here instead.
 
 
 :world_map:
