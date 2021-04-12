@@ -5,6 +5,7 @@
 > 1) Using the .NET Framework, OxyPlot and Caliburn.Micro Framework to create the GUI interface.
 > 2) Using MVVM architecture in a multi-threaded environment.
 > 3) Implementing a TCP Client to send the data to FlightGear.
+> 4) If the images in the README look blurry, click on the image to improve the quality. 
 
 
 ## Project Description
@@ -25,28 +26,48 @@ It allows the pilot to control the speed of the playback (slower or faster) and 
 -	A user interface that displays only the necessary information at a time, thus preventing overloading of the researcher.
 
 
+## Media controls
+
+
+<img src="https://user-images.githubusercontent.com/73064092/114400836-09bc9980-9bab-11eb-92ba-4e20fe11a545.png"  width="750">
+
+1) Move the playback 5 seconds backwards
+2) Move the playback backwards (until another button is pressed)
+ 3) Stop the playback
+ 4) Start the playback video
+ 5) Stop and return to the beginning of the playback
+ 6) Moves the playback forward (until another button is pressed)
+ 7) Moves the playback 5 seconds forward
 
 ## Preliminary requirements
 - [x] Make sure that flightgear application and visual studio 2019 are installed successfully.
 ## Setup instructions OR Instructions for running the software
 1. Open the flightgear application, with the following settings:
-![image](https://user-images.githubusercontent.com/73064092/114318178-87819600-9b14-11eb-9cde-430bbafa9edf.png)
+<img src="https://user-images.githubusercontent.com/73064092/114318178-87819600-9b14-11eb-9cde-430bbafa9edf.png"  width="750">
+
 2. Then click on the "Fly" button in the application
 3. Open visual studio 2019 with the attached code and run it.
 
 ## Operating instructions
 - [x] To configure the client, click on the `<Setup>` button
 ![image](https://user-images.githubusercontent.com/73064092/114318547-2955b280-9b16-11eb-94fe-65c7e39b954a.png)
+<img src=""  width="750">
+
 - [x] In the home screen, write the flightGear Server IP, FlightGear Server Port and CSV path
-![image](https://user-images.githubusercontent.com/73064092/114318413-738a6400-9b15-11eb-9977-850716142989.png)
+<img src="https://user-images.githubusercontent.com/73064092/114318413-738a6400-9b15-11eb-9977-850716142989.png"  width="500">
+
 - [x] *If one of the data entered is incorrect, the above alert window will be displayed*
-![image](https://user-images.githubusercontent.com/73064092/114318467-c237fe00-9b15-11eb-9450-15d68172d048.png)
+<img src="https://user-images.githubusercontent.com/73064092/114318467-c237fe00-9b15-11eb-9450-15d68172d048.png"  width="320">
+
 - [x] After initial setup, the option to start the simulation opens
-![image](https://user-images.githubusercontent.com/73064092/114318666-bc8ee800-9b16-11eb-92c0-be2566e0b64f.png)
+<img src="https://user-images.githubusercontent.com/73064092/114318666-bc8ee800-9b16-11eb-92c0-be2566e0b64f.png"  width="500">
+
 - [x] Then starting the simulation, all the other options for displaying all the information open up
-![image](https://user-images.githubusercontent.com/73064092/114318744-1a233480-9b17-11eb-9f6e-79eaf4a72d4f.png)
+<img src="https://user-images.githubusercontent.com/73064092/114318744-1a233480-9b17-11eb-9f6e-79eaf4a72d4f.png"  width="500">
+
 - [x] When all information is open
-![image](https://user-images.githubusercontent.com/73064092/114318760-2f985e80-9b17-11eb-8031-53f206e2394c.png)
+<img src="https://user-images.githubusercontent.com/73064092/114318760-2f985e80-9b17-11eb-8031-53f206e2394c.png"  width="500">
+
 
 :world_map:  :compass:	
 
@@ -78,8 +99,21 @@ As Kanye West said:
 I think you should use an
 `<addr>` element here instead.
 
+```diff
+- text in red
++ text in green
+! text in orange
+# text in gray
+@@ text in purple (and bold)@@
+```
 
 :world_map:
 
 :compass:	
+![image](https://user-images.githubusercontent.com/73064092/114318178-87819600-9b14-11eb-9cde-430bbafa9edf.png)
+![image](https://user-images.githubusercontent.com/73064092/114318413-738a6400-9b15-11eb-9977-850716142989.png)
+![image](https://user-images.githubusercontent.com/73064092/114318467-c237fe00-9b15-11eb-9450-15d68172d048.png)
+![image](https://user-images.githubusercontent.com/73064092/114318666-bc8ee800-9b16-11eb-92c0-be2566e0b64f.png)
+![image](https://user-images.githubusercontent.com/73064092/114318744-1a233480-9b17-11eb-9f6e-79eaf4a72d4f.png)
+![image](https://user-images.githubusercontent.com/73064092/114318760-2f985e80-9b17-11eb-8031-53f206e2394c.png)
 
