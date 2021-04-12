@@ -5,7 +5,7 @@
 > 1) Using the .NET Framework, OxyPlot and Caliburn.Micro Framework to create the GUI interface.
 > 2) Using MVVM architecture in a multi-threaded environment.
 > 3) Implementing a TCP Client to send the data to FlightGear.
-> If the images in the README look blurry, click on the image to improve the quality. 
+> 4) If the images in the README look blurry, click on the image to improve the quality. 
 
 
 ## Project Description
