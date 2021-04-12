@@ -91,6 +91,13 @@ As Kanye West said:
 I think you should use an
 `<addr>` element here instead.
 
+```diff
+- text in red
++ text in green
+! text in orange
+# text in gray
+@@ text in purple (and bold)@@
+```
 
 :world_map:
 
