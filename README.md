@@ -28,7 +28,7 @@ It allows the pilot to control the speed of the playback (slower or faster) and 
 ## Media controls
 
 
-<img src="https://user-images.githubusercontent.com/73064092/114400836-09bc9980-9bab-11eb-92ba-4e20fe11a545.png"  width="500">
+<img src="https://user-images.githubusercontent.com/73064092/114400836-09bc9980-9bab-11eb-92ba-4e20fe11a545.png"  width="750">
 
 1) Move the playback 5 seconds backwards
 2) Move the playback backwards (until another button is pressed)
