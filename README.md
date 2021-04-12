@@ -25,6 +25,15 @@ It allows the pilot to control the speed of the playback (slower or faster) and 
 -	A user interface that displays only the necessary information at a time, thus preventing overloading of the researcher.
 
 
+## Media controls
+![image](https://user-images.githubusercontent.com/73064092/114400836-09bc9980-9bab-11eb-92ba-4e20fe11a545.png)
+> 1)Move the playback 5 seconds backwards
+> 2)Move the playback backwards (until another button is pressed)
+> 3)Stop the playback
+> 4)Start the playback video
+> 5)Stop and return to the beginning of the playback
+> 6)Moves the playback forward (until another button is pressed)
+> 7)Moves the playback 5 seconds forward
 
 ## Preliminary requirements
 - [x] Make sure that flightgear application and visual studio 2019 are installed successfully.
