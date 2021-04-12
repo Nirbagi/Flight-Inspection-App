@@ -5,6 +5,7 @@
 > 1) Using the .NET Framework, OxyPlot and Caliburn.Micro Framework to create the GUI interface.
 > 2) Using MVVM architecture in a multi-threaded environment.
 > 3) Implementing a TCP Client to send the data to FlightGear.
+> If the images in the README look blurry, click on the image to improve the quality. 
 
 
 ## Project Description
@@ -56,7 +57,7 @@ It allows the pilot to control the speed of the playback (slower or faster) and 
 <img src="https://user-images.githubusercontent.com/73064092/114318413-738a6400-9b15-11eb-9977-850716142989.png"  width="500">
 
 - [x] *If one of the data entered is incorrect, the above alert window will be displayed*
-<img src="https://user-images.githubusercontent.com/73064092/114318467-c237fe00-9b15-11eb-9450-15d68172d048.png"  width="500">
+<img src="https://user-images.githubusercontent.com/73064092/114318467-c237fe00-9b15-11eb-9450-15d68172d048.png"  width="320">
 
 - [x] After initial setup, the option to start the simulation opens
 <img src="https://user-images.githubusercontent.com/73064092/114318666-bc8ee800-9b16-11eb-92c0-be2566e0b64f.png"  width="500">
