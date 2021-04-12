@@ -5,47 +5,53 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:oxy="http://oxyplot.org/wpf"
              xmlns:local="clr-namespace:FlightGearProject.Views"
-             mc:Ignorable="d" Background="Bisque"
-             d:DesignHeight="230" d:DesignWidth="485">
+             mc:Ignorable="d" Background="White"
+             d:DesignHeight="230" d:DesignWidth="585">
     <Grid>
-        <Canvas x:Name="Graphs" Height="230" Width="485" >
+        <Canvas x:Name="Graphs" Height="230" Width="585" >
             <!--oxyplot graphs:-->
 
-            <Grid Height="230" Width="485" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid Height="230" Width="585" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10" />
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition Width="10" />
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="5" />
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="5" />
                     <RowDefinition Height="auto" />
-                    <RowDefinition Height="5" />
                 </Grid.RowDefinitions>
 
 
                 <!--choose data to investigate-->
 
                 <ListBox x:Name="Feature_List" ItemsSource ="{Binding features}" SelectedItem="{Binding Path=vm_data, Mode=OneWayToSource}"
-                         Grid.RowSpan ="3" Grid.Column="1" Grid.Row="1" 
-                         MinWidth="200" MinHeight="220"  />
+                         Grid.RowSpan ="3" Grid.Column="0" Grid.Row="0" 
+                         Width="220" Height="230"  />
 
 
-                <!-- the graph of the chosen feature-->
+                <!-- Small Graph - the graph of the chosen feature-->
 
-                <oxy:Plot Grid.Column="3" Grid.Row="1" Title="{Binding vm_data}" TitleFontSize="10" MinHeight="107.5" MinWidth="250">
+                <oxy:Plot Grid.Column="2" Grid.Row="0" Title="{Binding vm_data}" TitleFontSize="10" MinHeight="107.5" MinWidth="107.5">
                     <oxy:Plot.Series>
                         <oxy:LineSeries ItemsSource="{Binding dataPoints}"/>
                     </oxy:Plot.Series>
                 </oxy:Plot>
 
-                <!--the graph of the correlated feature-->
+                <!--Small Graph - the graph of the correlated feature-->
 
-                <oxy:Plot Grid.Column="3" Grid.Row="3" Title="{Binding vm_cordata}" TitleFontSize="10" MinHeight="107.5" MinWidth="250">
+                <oxy:Plot Grid.Column="2" Grid.Row="2" Title="{Binding vm_cordata}" TitleFontSize="10" MinHeight="107.5" MinWidth="107.5">
+                    <oxy:Plot.Series>
+                        <oxy:LineSeries ItemsSource="{Binding corDataPoints}"/>
+                    </oxy:Plot.Series>
+                </oxy:Plot>
+
+                <!--Full Sized Graph-->
+
+                <oxy:Plot Grid.Column="4" Grid.Row="0" Grid.RowSpan="3" Title="{Binding vm_cordata}" TitleFontSize="10" MinHeight="225" MinWidth="225">
                     <oxy:Plot.Series>
                         <oxy:LineSeries ItemsSource="{Binding corDataPoints}"/>
                     </oxy:Plot.Series>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FlightGearProject.Views"        
         mc:Ignorable="d" 
         SizeToContent="WidthAndHeight"
-        Title="ShellView" Height="360" Width="780" WindowStartupLocation="CenterScreen">
+        Title="Flight Simulator" Height="400" Width="780" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20" />
@@ -36,11 +36,13 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
             <RowDefinition Height="auto" />
-            <RowDefinition Height="47" />
+            <RowDefinition Height="32.5" />
             <RowDefinition Height="auto" />
-            <RowDefinition Height="47" />
+            <RowDefinition Height="32.5" />
             <RowDefinition Height="auto" />
-            <RowDefinition Height="27" />
+            <RowDefinition Height="32.5" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="12.5" />
             <RowDefinition Height="20" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="20" />
@@ -55,34 +57,39 @@
                 Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Width="93" Height="31" />
         
         <!--Setup UC Area-->
-        <ContentControl x:Name="ClientSetup" Grid.Row="1" Grid.Column="3" Grid.RowSpan="6" Grid.ColumnSpan="19" />
+        <ContentControl x:Name="ClientSetup" Grid.Row="1" Grid.Column="3" Grid.RowSpan="8" Grid.ColumnSpan="19" />
 
         <!--Graphs UC Area-->
-        <ContentControl x:Name="Graphs" Grid.Row="1" Grid.Column="3" Grid.RowSpan="6" Grid.ColumnSpan="19" />
+        <ContentControl x:Name="Graphs" Grid.Row="1" Grid.Column="3" Grid.RowSpan="8" Grid.ColumnSpan="19" />
         <!--****************************************End Of Row 1****************************************-->
 
-        
         <!--*******************************************Row 3********************************************-->
         <!--Load Joystick Button-->
-        <Button x:Name="LoadJoystick" Content="Joystick" HorizontalAlignment="Left"
+        <Button x:Name="LoadADSetup" Content="AD Setup" HorizontalAlignment="Left"
                 Grid.Column="1" Grid.Row="3" VerticalAlignment="Top" Width="93" Height="31"/>
         <!--****************************************End Of Row 3****************************************-->
-
         
         <!--*******************************************Row 5********************************************-->
-        <!--Settings Button-->
-        <Button x:Name="LoadGraphs" Content="Graphs" HorizontalAlignment="Left"
-                Grid.Column="1" Grid.Row="5" VerticalAlignment="Top" Width="93" Height="31" />
+        <!--Load Joystick Button-->
+        <Button x:Name="LoadJoystick" Content="Joystick" HorizontalAlignment="Left"
+                Grid.Column="1" Grid.Row="5" VerticalAlignment="Top" Width="93" Height="31"/>
         <!--****************************************End Of Row 5****************************************-->
 
         
-        <!--*******************************************Row 8********************************************-->
+        <!--*******************************************Row 7********************************************-->
+        <!--Settings Button-->
+        <Button x:Name="LoadGraphs" Content="Graphs" HorizontalAlignment="Left"
+                Grid.Column="1" Grid.Row="7" VerticalAlignment="Top" Width="93" Height="31" />
+        <!--****************************************End Of Row 7****************************************-->
+
+        
+        <!--*******************************************Row 9********************************************-->
         <!--Start Simulation Button-->
         <Button x:Name="StartSimClient" Content="Start Simulator" HorizontalAlignment="Left"
-                Grid.Column="1" Grid.Row="8" VerticalAlignment="Top" Width="93" Height="31"/>
+                Grid.Column="1" Grid.Row="10" VerticalAlignment="Top" Width="93" Height="31"/>
 
         <!-- Jump Backwards Button-->
-        <Button x:Name="JumpBackwards" Grid.Column="3" Grid.Row="8"  
+        <Button x:Name="JumpBackwards" Grid.Column="3" Grid.Row="10"  
                 Background="White" BorderBrush="White" >
             <StackPanel Orientation="Horizontal" Height="20" Width="20">
                 <Image Source="/Resource/SkipBackward.jpg" Width="20" Height="20"
@@ -91,7 +98,7 @@
         </Button>
 
         <!--Play Backwards Button-->
-        <Button x:Name="PlayBackwards" Grid.Column="5" Grid.Row="8" Background="White" BorderBrush="White" >
+        <Button x:Name="PlayBackwards" Grid.Column="5" Grid.Row="10" Background="White" BorderBrush="White" >
             <StackPanel Orientation="Horizontal" Height="20" Width="20">
                 <Image Source="/Resource/Backward.jpg" Width="20" Height="20"
                        RenderTransformOrigin="0.5,0.5" VerticalAlignment="Bottom"/>
@@ -99,14 +106,14 @@
         </Button>
 
         <!--Pause Button-->
-        <Button x:Name="PauseSim" Grid.Column="7" Grid.Row="8" Background="White" BorderBrush="White" >
+        <Button x:Name="PauseSim" Grid.Column="7" Grid.Row="10" Background="White" BorderBrush="White" >
             <StackPanel Orientation="Horizontal" Height="20" Width="20">
                 <Image Source="/Resource/Pause.jpg" Height="20" Width="20" RenderTransformOrigin="0.692,0.504"/>
             </StackPanel>
         </Button>
 
         <!--Play Simulation Button-->
-        <Button x:Name="PlaySim" Grid.Column="9" Grid.Row="8" Background="White" BorderBrush="White" >
+        <Button x:Name="PlaySim" Grid.Column="9" Grid.Row="10" Background="White" BorderBrush="White" >
             <StackPanel Orientation="Horizontal" Height="20" Width="20">
                 <Image Source="/Resource/Play.jpg" Height="20" Width="20"
                        RenderTransformOrigin="0.5,0.5" VerticalAlignment="Bottom"/>
@@ -114,7 +121,7 @@
         </Button>
 
         <!--Stop Simulation Button-->
-        <Button x:Name="StopSimulation" Grid.Column="11" Grid.Row="8"  Background="White" BorderBrush="White" >
+        <Button x:Name="StopSimulation" Grid.Column="11" Grid.Row="10"  Background="White" BorderBrush="White" >
             <StackPanel Orientation="Horizontal" Height="20" Width="20">
                 <Image Source="/Resource/Stop.jpg" Width="20" Height="20"
                        RenderTransformOrigin="0.692,0.504"/>
@@ -122,7 +129,7 @@
         </Button>
 
         <!--Play Forward Button-->
-        <Button x:Name="PlayForward" Grid.Column="13" Grid.Row="8" Background="White" BorderBrush="White" >
+        <Button x:Name="PlayForward" Grid.Column="13" Grid.Row="10" Background="White" BorderBrush="White" >
             <StackPanel Orientation="Horizontal" Height="20" Width="20">
                 <Image Source="/Resource/Forward.jpg" Width="20" Height="20"
                        RenderTransformOrigin="0.5,0.5" VerticalAlignment="Bottom"/>
@@ -130,7 +137,7 @@
         </Button>
 
         <!--Skip Forward Button-->
-        <Button x:Name="SkipForward" Grid.Column="15" Grid.Row="8" Background="White" BorderBrush="White">
+        <Button x:Name="SkipForward" Grid.Column="15" Grid.Row="10" Background="White" BorderBrush="White">
             <StackPanel Orientation="Horizontal" Height="20" Width="20">
                 <Image Source="/Resource/SkipForward.jpg" Width="20" Height="20"
                        RenderTransformOrigin="0.5,0.5" VerticalAlignment="Bottom"/>
@@ -138,18 +145,18 @@
         </Button>
 
         <!--Play Speed Title-->
-        <TextBlock x:Name="playSpeedTitle" HorizontalAlignment="Left" Grid.Column="17" Grid.Row="8" 
+        <TextBlock x:Name="playSpeedTitle" HorizontalAlignment="Left" Grid.Column="17" Grid.Row="10" 
                    TextWrapping="Wrap" Text="Play speed:" VerticalAlignment="Center" FontSize="18"/>
 
         <!--Play Speed Title-->
-        <ComboBox x:Name="VideoSpeeds"  HorizontalAlignment="Left" Grid.Column="19" Grid.Row="8"
+        <ComboBox x:Name="VideoSpeeds"  HorizontalAlignment="Center" Grid.Column="19" Grid.Row="10"
                   VerticalAlignment="Center" Width="60"
                   SelectedItem="{Binding Path=VideoSpeed, Mode=OneWayToSource}"
                   SelectedIndex="3" HorizontalContentAlignment="Center"
                   RenderTransformOrigin="0.524,0.782" FontSize="16"/>
         
         <!--Time Indication Text-->
-        <TextBlock Grid.Column="21" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center"
+        <TextBlock Grid.Column="21" Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Center"
                    TextWrapping="Wrap" FontSize="16">
             <TextBlock.Text>
                 <MultiBinding StringFormat="{}{0:00}:{1:00}:{2:00}\{3:00}:{4:00}:{5:00}">
@@ -162,20 +169,19 @@
                 </MultiBinding>
             </TextBlock.Text>
         </TextBlock>
-        <!--****************************************End Of Row 8****************************************-->
-
+        <!--****************************************End Of Row 9****************************************-->
        
-        <!--*******************************************Row 10*******************************************-->
+        <!--*******************************************Row 12*******************************************-->
         <!--Progress Slider-->
         <Slider x:Name="VideoSlider" Value="{Binding Path=ProgressElapsed, Mode=TwoWay}"
                 TickPlacement="BottomRight" TickFrequency="0.1" Width="auto"
-                Grid.Column="1" Grid.Row="10" Grid.ColumnSpan="21" Minimum="0" Maximum="100"
+                Grid.Column="1" Grid.Row="12" Grid.ColumnSpan="21" Minimum="0" Maximum="100"
                 IsSnapToTickEnabled="True"/>
-        <!--****************************************End Of Row 10***************************************-->
+        <!--****************************************End Of Row 12***************************************-->
 
-        <!--*******************************************Row 11*******************************************-->
+        <!--*******************************************Row 13*******************************************-->
         <!--Joystic UC Area-->
-        <ContentControl x:Name="Joystick" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="21" />
-        <!--****************************************End Of Row 11***************************************-->
+        <ContentControl x:Name="Joystick" Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="21" />
+        <!--****************************************End Of Row 13***************************************-->
     </Grid>
 </Window>

@@ -1,5 +1,6 @@
 ﻿namespace FlightGearProject.EventModels
 {
+    // Event to update Joystick UC properties
     public class JoystickDataEvent
     {
         public double Aileron { get; set; }

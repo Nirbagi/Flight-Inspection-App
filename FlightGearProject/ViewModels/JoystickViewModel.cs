@@ -5,6 +5,7 @@ namespace FlightGearProject.ViewModels
 {
     public class JoystickViewModel : Screen, IHandle<JoystickDataEvent>
     {
+        /*******Joystick Properties********/
         private IEventAggregator _events;
         private double _aileron;
         private double _elevator;
@@ -17,6 +18,9 @@ namespace FlightGearProject.ViewModels
         private double _pitch;
         private double _throttleA;
         private double _throttleB;
+        /**********************************/
+
+        /***************Public Setters/Getters***************/
         public double Aileron
         {
             get { return _aileron; }
@@ -115,13 +119,15 @@ namespace FlightGearProject.ViewModels
                 _throttleB = value;
                 NotifyOfPropertyChange(() => ThrottleB);
             }
-        }
-        
+        }        
         public JoystickViewModel(IEventAggregator events)
         {
             _events = events;
             _events.Subscribe(this);
         }
+        /****************************************************/
+
+        // Update event handler
         public void Handle(JoystickDataEvent message)
         {
             // Joystick & Flight Properties

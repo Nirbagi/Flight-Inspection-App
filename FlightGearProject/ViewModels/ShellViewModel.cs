@@ -1,13 +1,14 @@
 ﻿using Caliburn.Micro;
 using FlightGearProject.EventModels;
 using FlightGearProject.Models;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
 namespace FlightGearProject.ViewModels
 {
-    public class ShellViewModel : Conductor<Screen>.Collection.AllActive, IHandle<SetupEvent>
+    public class ShellViewModel : Conductor<Screen>.Collection.AllActive, IHandle<SetupEvent>, IHandle<ADSetupEvent>
     {
         /****Columns of various flight properties in the given CSV file****/
         public enum FlightData {            
@@ -28,15 +29,19 @@ namespace FlightGearProject.ViewModels
         /********************Private Members & Public Setters/Getters*********************/
         // private members 
         private IEventAggregator _events = new EventAggregator();
+        private IWindowManager _manager = new WindowManager();
         private SetupViewModel _clientSetup;
         private JoystickViewModel _joystick;
         private GraphsViewModel _graphs;
+        private ADSetupViewModel _aDSetup;
         private BindableCollection<float> _videoSpeeds = new BindableCollection<float>();
         private float _videoSpeed = 1;
-        private FGClient _simClient = new FGClient();
-        private float _progressElapsed;                
+        private FGClientModel _simClient = new FGClientModel();
+        private AnomalyDetectionModel _aDAlgo = new AnomalyDetectionModel();
+        private bool _isClientConnected = true;
+        private float _progressElapsed = 0;                
         private bool _updateTimeRunning = false;
-        private int _remainingSiminSecs;
+        private int _remainingSiminSecs = 0;
         private int _simTotalSeconds = 0;
         private int _simTotalMins = 0;
         private int _simTotalHours = 0;
@@ -72,6 +77,15 @@ namespace FlightGearProject.ViewModels
                 NotifyOfPropertyChange(() => Graphs);
             }
         }
+        public ADSetupViewModel ADSetup
+        {
+            get { return _aDSetup; }
+            set 
+            { 
+                _aDSetup = value;
+                NotifyOfPropertyChange(() => ADSetup);
+            }
+        }
         public BindableCollection<float> VideoSpeeds
         {
             get { return _videoSpeeds; }
@@ -91,22 +105,36 @@ namespace FlightGearProject.ViewModels
                 SimClient.TranSpeed = (int)(100 / VideoSpeed);
             }
         }
-        public FGClient SimClient
+        public FGClientModel SimClient
         {
             get { return _simClient; }
             set { _simClient = value; }
         }
+        public AnomalyDetectionModel ADAlgo
+        {
+            get { return _aDAlgo; }
+            set { _aDAlgo = value; }
+        }
+        public bool IsClientConnected
+        {
+            get { return _isClientConnected; }
+            set
+            {
+                _isClientConnected = value;
+                NotifyOfPropertyChange(() => IsClientConnected);
+            }
+        }        
         public float ProgressElapsed
         {
             get { return _progressElapsed; }
             set
             {
                 _progressElapsed = value;
-                SimClient.Location = (int)(value * SimClient.VideoSize) / 100;
+                SimClient.CsvLineNum = (int)(value * SimClient.VideoSize) / 100;
                 NotifyOfPropertyChange(() => ProgressElapsed);
             }
         }    
-        public bool UpdateTimeRunning
+        public bool AlreadyPlaying
         {
             get { return _updateTimeRunning; }
             set { _updateTimeRunning = value; }
@@ -174,10 +202,54 @@ namespace FlightGearProject.ViewModels
 
         /*********************public members***********************/
         public bool SetupAlreadyOpen { get; set; } = false;
+        public bool ADSetupAlreadyOpen { get; set; } = false;
         public bool JoystickAlreadyOpen { get; set; } = false;
         public bool GraphsAlreadyOpen { get; set; } = false;
         /**********************************************************/
-        
+
+        /**********************************Can Click Buttons Properties******************************/
+        private bool _canLoadSetup = true;
+        private bool _canStartSimClient = false;
+        private bool _canLoadJoystick = false;
+        private bool _canLoadGraphs = false;
+        public bool CanLoadSetup
+        {
+            get { return _canLoadSetup; }
+            set
+            {
+                _canLoadSetup = value;
+                NotifyOfPropertyChange(() => CanLoadSetup);
+            }
+        }        
+        public bool CanStartSimClient
+        {
+            get { return _canStartSimClient; }
+            set
+            {
+                _canStartSimClient = value;
+                NotifyOfPropertyChange(() => CanStartSimClient);
+            }
+        }        
+        public bool CanLoadJoystick
+        {
+            get { return _canLoadJoystick; }
+            set
+            {
+                _canLoadJoystick = value;
+                NotifyOfPropertyChange(() => CanLoadJoystick);
+            }
+        }       
+        public bool CanLoadGraphs
+        {
+            get { return _canLoadGraphs; }
+            set
+            {
+                _canLoadGraphs = value;
+                NotifyOfPropertyChange(() => CanLoadGraphs);
+            }
+        }
+        /********************************************************************************************/
+
         /******************CTOR*******************/
         public ShellViewModel()
         {
@@ -193,7 +265,7 @@ namespace FlightGearProject.ViewModels
         /*****************************************/
 
         /********************************Helper Methods*******************************/
-        //Parse csv line & get specefic value as double
+        // Parse csv line & get specefic value as double
         public double SplitToDouble(string line, int column)
         {
             string[] dataOfLine = line.Split(',');
@@ -205,7 +277,14 @@ namespace FlightGearProject.ViewModels
         /**********************************Buttons Methods******************************/
         public async Task StartSimClient()
         {
-            await Task.Run(() => SimClient.InitFGClient());
+            // continue only if was able to init client (parameters were correct)
+            if (!SimClient.InitFGClient())
+                return;
+            // Disable 'Setup' button & Enable 'Load Joystick', 'Load Graphs' buttons 
+            CanStartSimClient = false;
+            CanLoadSetup = false;
+            CanLoadJoystick = true;
+            CanLoadGraphs = true;           
             RemainingSiminSecs = SimClient.VideoSize / 10;            
             SimTotalMins = SimClient.VideoSize / 600;
             SimTotalHours = SimClient.VideoSize / 36000;
@@ -214,43 +293,53 @@ namespace FlightGearProject.ViewModels
         }
 
         public async Task PlaySim()
-        {            
-            SimClient.PauseFlag = false;
-            SimClient.FBFlag = true;
-            if (UpdateTimeRunning == false)
+        {
+            if (AlreadyPlaying == false)
             {
-                UpdateTimeRunning = true;
+                AlreadyPlaying = true;
+                SimClient.PauseFlag = false;
+                SimClient.ForwardBackwardFlag = true;                          
                 await Task.Run(() => SimClient.StartPlayCSV());
+                AlreadyPlaying = false;
             }            
         }
+
         public void PauseSim()
         {
             SimClient.PauseFlag = true;
         }
+
         public void PlayForward()
         {
             SimClient.PauseFlag = false;
-            SimClient.FBFlag = true;
+            SimClient.ForwardBackwardFlag = true;
         }
+
         public void PlayBackwards()
         {
             SimClient.PauseFlag = false;
-            SimClient.FBFlag = false;
+            SimClient.ForwardBackwardFlag = false;
         }
 
         public void JumpBackwards()
         {
-            SimClient.Location -= 50;
+            SimClient.CsvLineNum -= 50;
         }
 
         public void SkipForward()
         {
-            SimClient.Location += 50;
+            SimClient.CsvLineNum += 50;
         }
+        
+        // Stops the playback and return to the beggining of the simulation
         public void StopSimulation()
         {
             SimClient.PauseFlag = true;
-            SimClient.Location = 0;
+            SimClient.CsvLineNum = 0;
+            ProgressElapsed = 0;
+            ElapsedTotalSeconds = 0;
+            ElapsedTotalMins = 0;
+            ElapsedTotalHours = 0;
         }
         /*******************************************************************************/
 
@@ -280,6 +369,16 @@ namespace FlightGearProject.ViewModels
                 SetupAlreadyOpen = false;
                 DeactivateItem(ClientSetup, true);
                 ClientSetup = null;
+            }
+        }
+
+        public void LoadADSetup()
+        {
+            if (ADSetupAlreadyOpen == false)
+            {
+                ADSetup = new ADSetupViewModel(_events, ADAlgo.DllPath, ADAlgo.TrainCSV, ADAlgo.TestFlightCSV);
+                _manager.ShowWindow(ADSetup);
+                ADSetupAlreadyOpen = true;
             }
         }
 
@@ -333,21 +432,23 @@ namespace FlightGearProject.ViewModels
         /*******************************************************************************/
 
         /****************************Background Methods - Update Info******************************/
+        // this function update elapsed time & slider progress
         public void UpdateTime()
         {
             while (true)
             {
                 if (SimClient.PauseFlag)
                     continue;
-                ProgressElapsed = 100 * (float)SimClient.Location / SimClient.VideoSize;
-                RemainingSiminSecs = SimClient.Location / 10;
-                ElapsedTotalMins = SimClient.Location / 600;
-                ElapsedTotalHours = SimClient.Location / 36000;
+                ProgressElapsed = 100 * (float)SimClient.CsvLineNum / SimClient.VideoSize;
+                RemainingSiminSecs = SimClient.CsvLineNum / 10;
+                ElapsedTotalMins = SimClient.CsvLineNum / 600;
+                ElapsedTotalHours = SimClient.CsvLineNum / 36000;
                 ElapsedTotalSeconds = RemainingSiminSecs - (ElapsedTotalMins * 60 + ElapsedTotalHours * 3600);
                 Thread.Sleep((int)(1000 / VideoSpeed));
             }
         }
 
+        // this function update JoystickVM for the correct state
         public void UpdateJoystick()
         {
             string curLine;
@@ -356,7 +457,7 @@ namespace FlightGearProject.ViewModels
             {
                 if (SimClient.PauseFlag)
                     continue;
-                curLine = SimClient.FileLines[SimClient.Location];
+                curLine = SimClient.FileLines[SimClient.CsvLineNum];
                 ail = SplitToDouble(curLine, (int)FlightData.aileron);
                 ele = SplitToDouble(curLine, (int)FlightData.elevator);
                 rud = SplitToDouble(curLine, (int)FlightData.rudder);
@@ -381,9 +482,22 @@ namespace FlightGearProject.ViewModels
             SimClient.FGIp = message.Ip;
             SimClient.FGPort = message.Port;
             SimClient.CsvPath = message.CSVPath;
+            CanStartSimClient = true;
             DeactivateItem(ClientSetup, true);
             ClientSetup = null;
             SetupAlreadyOpen = false;
+        }
+
+        // Anomaly Detection Setup Event:
+        // Update Alogrithm dll , Train/Test flights files paths
+        public void Handle(ADSetupEvent message)
+        {
+            ADAlgo.DllPath = message.DllPath;
+            ADAlgo.TrainCSV = message.TrainCsv;
+            ADAlgo.TestFlightCSV = message.TestFlightCsv;
+            DeactivateItem(ADSetup, true);
+            ADSetup = null;
+            ADSetupAlreadyOpen = false;
         }
         /*******************************************************************************/
     }

@@ -79,13 +79,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="EventModels\ADSetupEvent.cs" />
     <Compile Include="EventModels\JoystickDataEvent.cs" />
     <Compile Include="EventModels\SetupEvent.cs" />
-    <Compile Include="Models\FGClient.cs" />
+    <Compile Include="Models\AnomalyDetectionModel.cs" />
+    <Compile Include="Models\FGClientModel.cs" />
+    <Compile Include="ViewModels\ADSetupViewModel.cs" />
     <Compile Include="ViewModels\GraphsViewModel.cs" />
     <Compile Include="ViewModels\SetupViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\JoystickViewModel.cs" />
+    <Compile Include="Views\ADSetupView.xaml.cs">
+      <DependentUpon>ADSetupView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\GraphsView.xaml.cs">
       <DependentUpon>GraphsView.xaml</DependentUpon>
     </Compile>
@@ -128,6 +134,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\ADSetupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\GraphsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

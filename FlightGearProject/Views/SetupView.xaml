@@ -4,15 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FlightGearProject.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="400" Background="LightGray">
+             mc:Ignorable="d" Background="White"
+             d:DesignHeight="200" d:DesignWidth="400" >
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="10" />
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="20" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
@@ -25,6 +24,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
+        
         <!--FlightGear IP-->
         <TextBlock Width="auto"  Grid.Row="1" Grid.Column="1" Text="FlightGear Server IP:"/>
         <TextBox x:Name="Ip"  Grid.Row="1" Grid.Column="3" Width="auto" HorizontalAlignment="Center" MinWidth="150" />
@@ -38,7 +38,7 @@
         <TextBox x:Name="CSVPath" Grid.Row="5" Grid.Column="3" HorizontalAlignment="Center" MinWidth="150"/>
 
         <!--Save Configuration-->
-        <Button x:Name="ButtonClick" Grid.Row="7" Grid.Column="3" Content="Save" Width="50" Height="23"
+        <Button x:Name="SaveClicked" Grid.Row="7" Grid.Column="3" Content="Save" Width="50" Height="23"
                 VerticalAlignment="Top" HorizontalAlignment="Center"/>
 
     </Grid>
