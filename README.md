@@ -25,6 +25,7 @@ It allows the pilot to control the speed of the playback (slower or faster) and 
 -	Load different algorithms to perform in-depth research
 -	A user interface that displays only the necessary information at a time, thus preventing overloading of the researcher.
 
+## MVVM architecture
 
 ## Media controls
 
