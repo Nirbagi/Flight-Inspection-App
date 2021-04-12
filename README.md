@@ -42,7 +42,7 @@ It allows the pilot to control the speed of the playback (slower or faster) and 
 - [x] Make sure that flightgear application and visual studio 2019 are installed successfully.
 ## Setup instructions OR Instructions for running the software
 1. Open the flightgear application, with the following settings:
-<img src="https://user-images.githubusercontent.com/73064092/114400836-09bc9980-9bab-11eb-92ba-4e20fe11a545.png"  width="750">
+<img src="https://user-images.githubusercontent.com/73064092/114318178-87819600-9b14-11eb-9cde-430bbafa9edf.png"  width="750">
 
 2. Then click on the "Fly" button in the application
 3. Open visual studio 2019 with the attached code and run it.
