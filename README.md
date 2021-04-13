@@ -65,7 +65,7 @@ Our code is divided into three main parts, the first part is the `<Model>` In th
 <img src="https://user-images.githubusercontent.com/73064092/114602601-7749f200-9c9f-11eb-955a-e02d30daf51e.png"  width="500">
 
 - [x] When all information is open
-<img src="https://user-images.githubusercontent.com/73064092/114605580-e6751580-9ca2-11eb-8fcd-a40cbbefb9ea.png  width="500">
+<img src="https://user-images.githubusercontent.com/73064092/114605580-e6751580-9ca2-11eb-8fcd-a40cbbefb9ea.png"  width="500">
 
 - [x] To load a flight to compare in the algorithm click ADsetup:
 <img src="https://user-images.githubusercontent.com/73064092/114604535-a95c5380-9ca1-11eb-8378-77069b9e9c2f.png"  width="500">
