@@ -65,7 +65,7 @@ Our code is divided into three main parts, the first part is the `<Model>` In th
 <img src="https://user-images.githubusercontent.com/73064092/114601920-b62b7800-9c9e-11eb-9695-056dd2f81858.png"  width="500">
 
 - [x] Then starting the simulation, all the other options for displaying all the information open up
-<img src="https://user-images.githubusercontent.com/73064092/114318744-1a233480-9b17-11eb-9f6e-79eaf4a72d4f.png"  width="500">
+<img src="https://user-images.githubusercontent.com/73064092/114602601-7749f200-9c9f-11eb-955a-e02d30daf51e.png"  width="500">
 
 - [x] When all information is open
 <img src="https://user-images.githubusercontent.com/73064092/114318760-2f985e80-9b17-11eb-8031-53f206e2394c.png"  width="500">
