@@ -76,7 +76,7 @@ Our code is divided into three main parts, the first part is the `<Model>` In th
 ![image](https://user-images.githubusercontent.com/73064092/114601586-57fe9500-9c9e-11eb-97f2-479d84dec26f.png)
 
 
-:world_map:  :compass:	
+:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:
 
 ![image](https://user-images.githubusercontent.com/73064092/114603050-f0494980-9c9f-11eb-8370-a7db94102c1b.png)
 
