@@ -56,7 +56,7 @@ Our code is divided into three main parts, the first part is the `<Model>` In th
 <img src=""  width="750">
 
 - [x] In the home screen, write the flightGear Server IP, FlightGear Server Port and CSV path
-<img src="https://user-images.githubusercontent.com/73064092/114318413-738a6400-9b15-11eb-9977-850716142989.png"  width="500">
+<img src="https://user-images.githubusercontent.com/73064092/114602142-effc7e80-9c9e-11eb-89ec-e4cce9e0062d.png"  width="500">
 
 - [x] *If one of the data entered is incorrect, the above alert window will be displayed*
 <img src="https://user-images.githubusercontent.com/73064092/114318467-c237fe00-9b15-11eb-9450-15d68172d048.png"  width="320">
