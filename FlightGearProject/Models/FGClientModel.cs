@@ -66,7 +66,7 @@ namespace FlightGearProject.Models
                 {
                     CsvLineNum--;
                     // stop playback if reached to the beginning
-                   if (CsvLineNum == 0)
+                   if (CsvLineNum <= 0)
                         return;
                 }
                     

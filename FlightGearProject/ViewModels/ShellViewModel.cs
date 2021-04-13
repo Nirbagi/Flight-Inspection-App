@@ -1,17 +1,16 @@
 ﻿using Caliburn.Micro;
 using FlightGearProject.EventModels;
 using FlightGearProject.Models;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace FlightGearProject.ViewModels
 {
     public class ShellViewModel : Conductor<Screen>.Collection.AllActive, IHandle<SetupEvent>, IHandle<ADSetupEvent>
     {
         /****Columns of various flight properties in the given CSV file****/
-        public enum FlightData {            
+        public enum FlightData 
+        {            
             aileron = 0,
             elevator = 1,
             rudder = 2,
@@ -40,7 +39,7 @@ namespace FlightGearProject.ViewModels
         private AnomalyDetectionModel _aDAlgo = new AnomalyDetectionModel();
         private bool _isClientConnected = true;
         private float _progressElapsed = 0;                
-        private bool _updateTimeRunning = false;
+        private bool _updateTimeRunning = false;           
         private int _remainingSiminSecs = 0;
         private int _simTotalSeconds = 0;
         private int _simTotalMins = 0;
@@ -48,7 +47,7 @@ namespace FlightGearProject.ViewModels
         private int _elapsedTotalSeconds = 0;
         private int _elapsedTotalMins = 0;
         private int _elapsedTotalHours = 0;
-
+       
         // public setters/getters to private members
         public SetupViewModel ClientSetup
         {
@@ -128,10 +127,16 @@ namespace FlightGearProject.ViewModels
         {
             get { return _progressElapsed; }
             set
-            {
+            {                
+                float cur = _progressElapsed;
                 _progressElapsed = value;
                 SimClient.CsvLineNum = (int)(value * SimClient.VideoSize) / 100;
                 NotifyOfPropertyChange(() => ProgressElapsed);
+                // update Graphs Data
+                if (cur < value)
+                    _events.PublishOnUIThread(new GraphEvent(SimClient.FileLines[SimClient.CsvLineNum], SimClient.CsvLineNum, true));
+                else
+                    _events.PublishOnUIThread(new GraphEvent(SimClient.FileLines[SimClient.CsvLineNum], SimClient.CsvLineNum, false));                                
             }
         }    
         public bool AlreadyPlaying
@@ -139,6 +144,7 @@ namespace FlightGearProject.ViewModels
             get { return _updateTimeRunning; }
             set { _updateTimeRunning = value; }
         }
+        public bool StopUpdateGraph { get; set; } = false;
         public int RemainingSiminSecs
         {
             get { return _remainingSiminSecs; }
@@ -201,8 +207,7 @@ namespace FlightGearProject.ViewModels
         /**********************************************************************************/
 
         /*********************public members***********************/
-        public bool SetupAlreadyOpen { get; set; } = false;
-        public bool ADSetupAlreadyOpen { get; set; } = false;
+        public bool SetupAlreadyOpen { get; set; } = false;        
         public bool JoystickAlreadyOpen { get; set; } = false;
         public bool GraphsAlreadyOpen { get; set; } = false;
         /**********************************************************/
@@ -266,7 +271,7 @@ namespace FlightGearProject.ViewModels
 
         /********************************Helper Methods*******************************/
         // Parse csv line & get specefic value as double
-        public double SplitToDouble(string line, int column)
+        static public double SplitToDouble(string line, int column)
         {
             string[] dataOfLine = line.Split(',');
             double data = double.Parse(dataOfLine[column]);
@@ -298,9 +303,9 @@ namespace FlightGearProject.ViewModels
             {
                 AlreadyPlaying = true;
                 SimClient.PauseFlag = false;
-                SimClient.ForwardBackwardFlag = true;                          
+                SimClient.ForwardBackwardFlag = true;
                 await Task.Run(() => SimClient.StartPlayCSV());
-                AlreadyPlaying = false;
+                AlreadyPlaying = false;                
             }            
         }
 
@@ -324,11 +329,21 @@ namespace FlightGearProject.ViewModels
         public void JumpBackwards()
         {
             SimClient.CsvLineNum -= 50;
+            StopUpdateGraph = false;
+            // Update GraphsVM
+            for (int i = 0; i < 5; i++)
+                _events.PublishOnUIThread(new GraphEvent(SimClient.FileLines[SimClient.CsvLineNum],
+                    SimClient.CsvLineNum, false));
+            StopUpdateGraph = true;
         }
 
         public void SkipForward()
         {
             SimClient.CsvLineNum += 50;
+            // Update GraphsVM
+            for (int i = 0; i < 5; i++)
+                _events.PublishOnUIThread(new GraphEvent(SimClient.FileLines[SimClient.CsvLineNum],
+                 SimClient.CsvLineNum, SimClient.ForwardBackwardFlag));
         }
         
         // Stops the playback and return to the beggining of the simulation
@@ -374,12 +389,15 @@ namespace FlightGearProject.ViewModels
 
         public void LoadADSetup()
         {
-            if (ADSetupAlreadyOpen == false)
+            ADSetup = new ADSetupViewModel(_events, ADAlgo.DllPath, ADAlgo.TrainCSV, ADAlgo.TestFlightCSV);
+            _manager.ShowWindow(ADSetup);
+  
+            /*await Task.Run(() =>
             {
-                ADSetup = new ADSetupViewModel(_events, ADAlgo.DllPath, ADAlgo.TrainCSV, ADAlgo.TestFlightCSV);
-                _manager.ShowWindow(ADSetup);
-                ADSetupAlreadyOpen = true;
-            }
+                while (!StopUpdateGraph)
+                    continue;
+            });
+            ADAlgo.ADLoadDLL();*/
         }
 
         public async Task LoadJoystick()
@@ -407,7 +425,7 @@ namespace FlightGearProject.ViewModels
             }
         }
 
-        public void LoadGraphs()
+        public async Task LoadGraphs()
         {
             if (GraphsAlreadyOpen == false)
             {
@@ -418,8 +436,9 @@ namespace FlightGearProject.ViewModels
 
                 // Enable Graphs UC
                 GraphsAlreadyOpen = true;
-                Graphs = new GraphsViewModel();
+                Graphs = new GraphsViewModel(_events);
                 ActivateItem(Graphs);
+                await Task.Run(() => UpdateGraphs());
             }
             else if (GraphsAlreadyOpen == true)
             {
@@ -473,6 +492,18 @@ namespace FlightGearProject.ViewModels
                 Thread.Sleep((int)(1000 / VideoSpeed));
             }
         }
+        
+        // this function update GraphsVM for the correct state
+        public void UpdateGraphs()
+        {
+            while (GraphsAlreadyOpen)
+            {
+                if (SimClient.PauseFlag || StopUpdateGraph)
+                    continue;
+                _events.PublishOnUIThread(new GraphEvent(SimClient.FileLines[SimClient.CsvLineNum], SimClient.CsvLineNum, SimClient.ForwardBackwardFlag));
+                Thread.Sleep((int)(1000 / VideoSpeed));
+            }
+        }
         /****************************************************************************************/
 
         /****************************Event Handlers Methods*****************************/
@@ -497,7 +528,7 @@ namespace FlightGearProject.ViewModels
             ADAlgo.TestFlightCSV = message.TestFlightCsv;
             DeactivateItem(ADSetup, true);
             ADSetup = null;
-            ADSetupAlreadyOpen = false;
+            StopUpdateGraph = true;
         }
         /*******************************************************************************/
     }

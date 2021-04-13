@@ -8,7 +8,9 @@ namespace FlightGearProject.ViewModels
         /*******Joystick Properties********/
         private IEventAggregator _events;
         private double _aileron;
+        private double _aileronView;
         private double _elevator;
+        private double _elevetorView;
         private double _rudder;
         private double _altitude;
         private double _airspeed;
@@ -30,6 +32,15 @@ namespace FlightGearProject.ViewModels
                 NotifyOfPropertyChange(() => Aileron);
             }
         }
+        public double AileronView
+        {
+            get { return _aileronView; }
+            set
+            {
+                _aileronView = value;
+                NotifyOfPropertyChange(() => AileronView);
+            }
+        }
         public double Elevator
         {
             get { return _elevator; }
@@ -37,6 +48,15 @@ namespace FlightGearProject.ViewModels
             { 
                 _elevator = value;
                 NotifyOfPropertyChange(() => Elevator);
+            }
+        }
+        public double ElevatorView
+        {
+            get { return _elevetorView; }
+            set
+            {
+                _elevetorView = value;
+                NotifyOfPropertyChange(() => ElevatorView);
             }
         }
         public double Rudder
@@ -131,8 +151,10 @@ namespace FlightGearProject.ViewModels
         public void Handle(JoystickDataEvent message)
         {
             // Joystick & Flight Properties
-            Aileron = (message.Aileron * 60) + 125;
-            Elevator = (message.Elevator * 60) + 125;
+            Aileron = message.Aileron;
+            AileronView = (message.Aileron * 60) + 125;
+            Elevator = message.Elevator;
+            ElevatorView = (message.Elevator * 60) + 125;
             Rudder = message.Rudder;
             Altitude = message.Altitude;
             Airspeed = message.Airspeed;

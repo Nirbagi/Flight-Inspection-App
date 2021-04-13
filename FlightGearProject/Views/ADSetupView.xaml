@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlightGearProject.Views"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="ADSetupView" Height="250" Width="550">
+        Title="ADSetupView" Height="290" Width="460">
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
@@ -14,6 +14,10 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
             <RowDefinition Height="20" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="20" />
@@ -25,20 +29,28 @@
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
 
+        <!--Input Instructions-->
+        <TextBlock Width="auto"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left"
+                   Text="Please Follow Below Instructions:"/>
+        <TextBlock Width="auto"  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left"
+                   Text="1. Enter Paths Using '/' (Avoid Using '\')."/>
+        <TextBlock Width="auto"  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left"
+                   Text="2. Enter CSV Files w/ Features Names in First Line."/>
+        
         <!--Alogorithm DLL Path-->
-        <TextBlock Width="auto"  Grid.Row="1" Grid.Column="1" Text="Anomaly Detection Algorithm Dll Path:"/>
-        <TextBox x:Name="DllPath"  Grid.Row="1" Grid.Column="3" Width="auto" HorizontalAlignment="Center" MinWidth="150" />
+        <TextBlock Width="auto"  Grid.Row="5" Grid.Column="1" Text="Anomaly Detection Algorithm Dll Path:"/>
+        <TextBox x:Name="DllPath"  Grid.Row="5" Grid.Column="3" Width="auto" HorizontalAlignment="Center" MinWidth="150" MaxWidth="150"/>
 
         <!--Train Flight CSV Path-->
-        <TextBlock Width="auto"  Grid.Row="3" Grid.Column="1" Text="Train Flight CSV File Path:"/>
-        <TextBox x:Name="TrainFlightCSV" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Center" MinWidth="150"/>
+        <TextBlock Width="auto"  Grid.Row="7" Grid.Column="1" Text="Train Flight CSV File Path:"/>
+        <TextBox x:Name="TrainFlightCSV" Grid.Row="7" Grid.Column="3" HorizontalAlignment="Center" MinWidth="150" MaxWidth="150"/>
 
         <!--Test Flight CSV Path-->
-        <TextBlock Width="auto"  Grid.Row="5" Grid.Column="1" Text="Test Flight CSV File Path:"/>
-        <TextBox x:Name="TestFlightCSV" Grid.Row="5" Grid.Column="3" HorizontalAlignment="Center" MinWidth="150"/>
+        <TextBlock Width="auto"  Grid.Row="9" Grid.Column="1" Text="Test Flight CSV File Path:"/>
+        <TextBox x:Name="TestFlightCSV" Grid.Row="9" Grid.Column="3" HorizontalAlignment="Center" MinWidth="150" MaxWidth="150"/>
 
         <!--Save Configuration-->
-        <Button x:Name="ADSaveClicked" Grid.Row="7" Grid.Column="3" Content="Save" Width="50" Height="23"
+        <Button x:Name="ADSaveClicked" Grid.Row="11" Grid.Column="3" Content="Save" Width="50" Height="23"
                 VerticalAlignment="Top" HorizontalAlignment="Center"/>
     </Grid>
 </Window>

@@ -80,10 +80,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="EventModels\ADSetupEvent.cs" />
+    <Compile Include="EventModels\GraphEvent.cs" />
     <Compile Include="EventModels\JoystickDataEvent.cs" />
     <Compile Include="EventModels\SetupEvent.cs" />
     <Compile Include="Models\AnomalyDetectionModel.cs" />
     <Compile Include="Models\FGClientModel.cs" />
+    <Compile Include="Models\FromDll.cs" />
     <Compile Include="ViewModels\ADSetupViewModel.cs" />
     <Compile Include="ViewModels\GraphsViewModel.cs" />
     <Compile Include="ViewModels\SetupViewModel.cs" />

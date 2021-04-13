@@ -6,13 +6,14 @@
              xmlns:oxy="http://oxyplot.org/wpf"
              xmlns:local="clr-namespace:FlightGearProject.Views"
              mc:Ignorable="d" Background="White"
-             d:DesignHeight="230" d:DesignWidth="585">
+             d:DesignHeight="230" d:DesignWidth="865">
     <Grid>
-        <Canvas x:Name="Graphs" Height="230" Width="585" >
+        <Canvas x:Name="Graphs" Height="230" Width="865" >
             <!--oxyplot graphs:-->
-
-            <Grid Height="230" Width="585" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid Height="230" Width="865" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="10" />
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition Width="10" />
                     <ColumnDefinition Width="auto" />
@@ -25,35 +26,33 @@
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
 
-
                 <!--choose data to investigate-->
+                <ComboBox x:Name="Feature_List" ItemsSource ="{Binding Path = FlightDataNames}" SelectedItem="{Binding Path=vm_data, Mode=OneWayToSource}"  SelectedIndex="0"
+                          Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Width="125" Height="30" FontSize="16" 
+                          VerticalAlignment= "Center"
+                          HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
-                <ListBox x:Name="Feature_List" ItemsSource ="{Binding features}" SelectedItem="{Binding Path=vm_data, Mode=OneWayToSource}"
-                         Grid.RowSpan ="3" Grid.Column="0" Grid.Row="0" 
-                         Width="220" Height="230"  />
-
-
-                <!-- Small Graph - the graph of the chosen feature-->
-
-                <oxy:Plot Grid.Column="2" Grid.Row="0" Title="{Binding vm_data}" TitleFontSize="10" MinHeight="107.5" MinWidth="107.5">
+                <!-- the graph of the chosen feature-->
+                <oxy:Plot Grid.Column="2" Grid.Row="0" Grid.RowSpan="3" Title="{Binding Path = vm_data}" TitleFontSize="10" MinHeight="225" MinWidth="225">
                     <oxy:Plot.Series>
-                        <oxy:LineSeries ItemsSource="{Binding dataPoints}"/>
+                        <oxy:LineSeries ItemsSource="{Binding Path= dataPoints}"/>
                     </oxy:Plot.Series>
                 </oxy:Plot>
 
-                <!--Small Graph - the graph of the correlated feature-->
-
-                <oxy:Plot Grid.Column="2" Grid.Row="2" Title="{Binding vm_cordata}" TitleFontSize="10" MinHeight="107.5" MinWidth="107.5">
+                <!--the graph of the correlated feature-->
+                <oxy:Plot Grid.Column="4" Grid.Row="0" Grid.RowSpan="3" Title="{Binding Path= vm_cordata}" TitleFontSize="10" MinHeight="225" MinWidth="225">
                     <oxy:Plot.Series>
-                        <oxy:LineSeries ItemsSource="{Binding corDataPoints}"/>
+                        <oxy:LineSeries ItemsSource="{Binding Path= corDataPoints, Mode=OneWay}"/>
                     </oxy:Plot.Series>
                 </oxy:Plot>
 
-                <!--Full Sized Graph-->
-
-                <oxy:Plot Grid.Column="4" Grid.Row="0" Grid.RowSpan="3" Title="{Binding vm_cordata}" TitleFontSize="10" MinHeight="225" MinWidth="225">
+                <!--the graph of both features-->
+                <oxy:Plot Grid.Column="6" Grid.Row="0" Grid.RowSpan="3" Title="Correlated Features" TitleFontSize="10" MinHeight="225" MinWidth="225">
                     <oxy:Plot.Series>
-                        <oxy:LineSeries ItemsSource="{Binding corDataPoints}"/>
+                        <oxy:ScatterSeries MarkerType="Circle" MarkerSize="2" MarkerFill="Black" ItemsSource="{Binding Path= RealData}"/>
+                        <oxy:ScatterSeries MarkerType="Circle" MarkerSize="2" MarkerFill="Black" ItemsSource="{Binding Path= AnomalyData}"/>
+                        <oxy:LineSeries MarkerFill="Black" ItemsSource="{Binding Path= RegLine}"/>
+                        <oxy:LineSeries MarkerFill="Green" ItemsSource="{Binding Path= RegLine30}"/>
                     </oxy:Plot.Series>
                 </oxy:Plot>
             </Grid>

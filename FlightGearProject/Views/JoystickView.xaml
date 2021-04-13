@@ -75,7 +75,7 @@
                 </Path.RenderTransform>
             </Path>
 
-            <Canvas  x:Name="Knob" VerticalAlignment="Top" HorizontalAlignment="Left" Width="0" Height="0" RenderTransformOrigin="0.5,0.5" Canvas.Left="{Binding Path=Aileron, Mode=OneWay}" Canvas.Top="{Binding Path=Elevator, Mode=OneWay}">
+            <Canvas  x:Name="Knob" VerticalAlignment="Top" HorizontalAlignment="Left" Width="0" Height="0" RenderTransformOrigin="0.5,0.5" Canvas.Left="{Binding Path=AileronView, Mode=OneWay}" Canvas.Top="{Binding Path=ElevatorView, Mode=OneWay}">
                 <Ellipse x:Name="KnobBase" HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.5,0.5" Canvas.Top="1" >
                     <Ellipse.Fill>
                         <RadialGradientBrush>
@@ -182,7 +182,7 @@
             <Label FontWeight="Bold" FontSize="12" HorizontalAlignment="Center" Margin="0,0,4,0">Elevator:</Label>
             <TextBlock Text="{Binding Path=Elevator, Mode=OneWay}" FontWeight="Bold" FontSize="12" HorizontalAlignment="Center"/>
         </StackPanel>
-        <Grid Height="80" Canvas.Left="664" Canvas.Top="30" Width="120">
+        <Grid Height="160" Canvas.Left="644" Canvas.Top="10" Width="140">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
@@ -191,16 +191,28 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <Label FontWeight="Bold" FontSize="12" HorizontalAlignment="Center">Yaw:</Label>
-            <TextBlock Grid.Column="1" Text="{Binding Path=Yaw, Mode=OneWay}" FontWeight="Bold" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label FontWeight="Bold" FontSize="12" HorizontalAlignment="Center">Altitude:</Label>
+            <TextBlock Grid.Column="1" Text="{Binding Path=Altitude, Mode=OneWay}" FontWeight="Bold" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-            <Label Grid.Row="1" FontWeight="Bold" FontSize="12" HorizontalAlignment="Center">Roll:</Label>
-            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=Roll, Mode=OneWay}" FontWeight="Bold" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Grid.Row="1" FontWeight="Bold" FontSize="12" HorizontalAlignment="Center">Air Speed:</Label>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=Airspeed, Mode=OneWay}" FontWeight="Bold" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-            <Label Grid.Row="2" FontWeight="Bold" FontSize="12" HorizontalAlignment="Center">Pitch:</Label>
-            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Path=Pitch, Mode=OneWay}" FontWeight="Bold" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Grid.Row="2" FontWeight="Bold" FontSize="12" HorizontalAlignment="Center">Direction:</Label>
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Path=Direction, Mode=OneWay}" FontWeight="Bold" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <Label Grid.Row="3" FontWeight="Bold" FontSize="12" HorizontalAlignment="Center">Yaw:</Label>
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Path=Yaw, Mode=OneWay}" FontWeight="Bold" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <Label Grid.Row="4" FontWeight="Bold" FontSize="12" HorizontalAlignment="Center">Roll:</Label>
+            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Path=Roll, Mode=OneWay}" FontWeight="Bold" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <Label Grid.Row="5" FontWeight="Bold" FontSize="12" HorizontalAlignment="Center">Pitch:</Label>
+            <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Path=Pitch, Mode=OneWay}" FontWeight="Bold" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Grid>
 
 
