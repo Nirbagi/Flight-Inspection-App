@@ -62,7 +62,7 @@ Our code is divided into three main parts, the first part is the `<Model>` In th
 <img src="https://user-images.githubusercontent.com/73064092/114318467-c237fe00-9b15-11eb-9450-15d68172d048.png"  width="320">
 
 - [x] After initial setup, the option to start the simulation opens
-<img src="https://user-images.githubusercontent.com/73064092/114318666-bc8ee800-9b16-11eb-92c0-be2566e0b64f.png"  width="500">
+<img src="https://user-images.githubusercontent.com/73064092/114601920-b62b7800-9c9e-11eb-9695-056dd2f81858.png"  width="500">
 
 - [x] Then starting the simulation, all the other options for displaying all the information open up
 <img src="https://user-images.githubusercontent.com/73064092/114318744-1a233480-9b17-11eb-9f6e-79eaf4a72d4f.png"  width="500">
