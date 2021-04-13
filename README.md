@@ -67,6 +67,10 @@ Our code is divided into three main parts, the first part is the `<Model>` In th
 - [x] When all information is open
 <img src="https://user-images.githubusercontent.com/73064092/114318760-2f985e80-9b17-11eb-8031-53f206e2394c.png"  width="500">
 
+- [x] To load a flight to compare in the algorithm:
+<img src="https://user-images.githubusercontent.com/73064092/114604535-a95c5380-9ca1-11eb-8378-77069b9e9c2f.png"  width="500">
+
+
 ## UML diagram
 ![image](https://user-images.githubusercontent.com/73064092/114601586-57fe9500-9c9e-11eb-97f2-479d84dec26f.png)
 
