@@ -26,7 +26,7 @@ It allows the pilot to control the speed of the playback (slower or faster) and 
 -	A user interface that displays only the necessary information at a time, thus preventing overloading of the researcher.
 
 ## MVVM architecture
-Our code is divided into three main parts, the first part is the <Model> In this part we have the FGClient that communicates with the flightgear, As part of the communicates with the FGClient, we sends to the flightgear all the information from the CSV. In the second part is the <ViewModel> which implementation the main for the joystick display, displaying the graphs and calculating the correlations algorithms. addition in this section is the implementation of all user actions. In the third part <View> is the implementation of the GUI and the user interface.
+Our code is divided into three main parts, the first part is the `<Model>` In this part we have the FGClient that communicates with the flightgear, As part of the communicates with the FGClient, we sends to the flightgear all the information from the CSV. In the second part is the `<ViewModel>` which implementation the main for the joystick display, displaying the graphs and calculating the correlations algorithms. addition in this section is the implementation of all user actions. In the third part `<View>` is the implementation of the GUI and the user interface.
  
 ## Media controls
 
