@@ -52,8 +52,8 @@ Our code is divided into three main parts, the first part is the `<Model>` In th
 
 ## Operating instructions
 - [x] To configure the client, click on the `<Setup>` button
-![image](https://user-images.githubusercontent.com/73064092/114318547-2955b280-9b16-11eb-94fe-65c7e39b954a.png)
-<img src=""  width="750">
+<img src="https://user-images.githubusercontent.com/73064092/114602294-1e7a5980-9c9f-11eb-8206-188b76cf972f.png"  width="500">
+
 
 - [x] In the home screen, write the flightGear Server IP, FlightGear Server Port and CSV path
 <img src="https://user-images.githubusercontent.com/73064092/114602142-effc7e80-9c9e-11eb-89ec-e4cce9e0062d.png"  width="500">
