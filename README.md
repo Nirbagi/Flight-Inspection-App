@@ -71,7 +71,7 @@ Our code is divided into three main parts, the first part is the `<Model>` In th
 <img src="https://user-images.githubusercontent.com/73064092/114318760-2f985e80-9b17-11eb-8031-53f206e2394c.png"  width="500">
 
 ## UML diagram
-![image](https://user-images.githubusercontent.com/73064092/114601214-ede5f000-9c9d-11eb-8f00-fc9bffe21fb9.png)
+![image](https://user-images.githubusercontent.com/73064092/114601586-57fe9500-9c9e-11eb-97f2-479d84dec26f.png)
 
 
 :world_map:  :compass:	
