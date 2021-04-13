@@ -73,49 +73,5 @@ Our code is divided into three main parts, the first part is the `<Model>` In th
 
 :world_map:  :compass:	
 
-
-
-
-
-
-- [x] ניסוי
-- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
-- [x] list syntax required (any unordered or ordered list supported)
-
-`<addr>` element here instead.
-
-
-
-###### This is an <h6> tag
-
-*This text will be italic*
-_This will also be italic_
-
-**This text will be bold**
-__This will also be bold__
-
-_You **can** combine them_
-
-As Kanye West said:
-
-I think you should use an
-`<addr>` element here instead.
-
-```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
-```
-
-:world_map:
-
-:compass:	
-![image](https://user-images.githubusercontent.com/73064092/114318178-87819600-9b14-11eb-9cde-430bbafa9edf.png)
-![image](https://user-images.githubusercontent.com/73064092/114318413-738a6400-9b15-11eb-9977-850716142989.png)
-![image](https://user-images.githubusercontent.com/73064092/114318467-c237fe00-9b15-11eb-9450-15d68172d048.png)
-![image](https://user-images.githubusercontent.com/73064092/114318666-bc8ee800-9b16-11eb-92c0-be2566e0b64f.png)
-![image](https://user-images.githubusercontent.com/73064092/114318744-1a233480-9b17-11eb-9f6e-79eaf4a72d4f.png)
-![image](https://user-images.githubusercontent.com/73064092/114318760-2f985e80-9b17-11eb-8031-53f206e2394c.png)
+![image](https://user-images.githubusercontent.com/73064092/114603050-f0494980-9c9f-11eb-8370-a7db94102c1b.png)
 
