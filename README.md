@@ -9,7 +9,7 @@
 
 
 ## Link to demonstration video
-[Link to demonstration video](https://www.google.com)
+:fist_right: [Link to demonstration video](https://www.google.com)
 
 ## Project Description
 This is an application that allows to display flight data on a dedicated simulator (FlightGear) and perform n data investigation.
