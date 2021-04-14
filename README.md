@@ -8,7 +8,7 @@
 > 4) If the images in the README look blurry, click on the image to improve the quality.
 
 
-## Link to demonstration video :film_projector:	
+## :film_projector:	 Link to demonstration video 
 :fist_right: [Link to demonstration video](https://www.google.com)
 
 ## Project Description
