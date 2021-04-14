@@ -87,7 +87,8 @@ This can be seen from the debugging of the system. Attached are photos of debugg
 :world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:
 :world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:
 :world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	
-![image](https://user-images.githubusercontent.com/73064092/114603050-f0494980-9c9f-11eb-8370-a7db94102c1b.png)
+![image](https://user-images.githubusercontent.com/73064092/114769242-a1201900-9d72-11eb-91a7-79e803afa9c8.png)
+
 :world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:
 :world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:
 :world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	
