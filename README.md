@@ -12,7 +12,7 @@
 This is an application that allows to display flight data on a dedicated simulator (FlightGear) and perform n data investigation.
 The application is designed for flight researchers, Air Force pilots or any pilot who wants to improve himself for future flights. 
 The application presents the pilot all of the recorded flight's data in various display forms, as a post flight process.
-It allows the pilot to control the speed of the playback (slower or faster) and perform an in-depth analysis of data relative to the pilot's other flights: Steering position, speed, direction of flight, altitude, yaw and roll indices, pitch, perform corrosion relative to other flights, load algorithms that study the information, etc ....
+It allows the pilot to control the speed of the playback (slower or faster) and perform an in-depth analysis of data relative to the pilot's other flights: Steering position, speed, direction of flight, altitude, yaw and roll indices, pitch, perform corrosion relative to other flights, load algorithms that study the information, etc ...
 
 
 
