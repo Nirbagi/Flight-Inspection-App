@@ -8,6 +8,9 @@
 > 4) If the images in the README look blurry, click on the image to improve the quality.
 
 
+## Link to demonstration video
+[Link to demonstration video](https://www.google.com)
+
 ## Project Description
 This is an application that allows to display flight data on a dedicated simulator (FlightGear) and perform n data investigation.
 The application is designed for flight researchers, Air Force pilots or any pilot who wants to improve himself for future flights. 
