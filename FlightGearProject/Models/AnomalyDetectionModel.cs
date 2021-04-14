@@ -1,4 +1,4 @@
-﻿using FlightGearProject.ViewModels;
+using FlightGearProject.ViewModels;
 using OxyPlot;
 using OxyPlot.Series;
 using System;
@@ -16,7 +16,7 @@ namespace FlightGearProject.Models
         private string _testFlightCSV;
 
         private List<string> _anomalies = new List<string> { };
-        private Dictionary<String, List<String>> _draw = new Dictionary<String, List<String>> { };
+        private Dictionary<String, List<String>> _draw = new Dictionary< String, List<String>> { };
 
         private ObservableCollection<ScatterPoint> _anomaliesPoints = new ObservableCollection<ScatterPoint> { };
         private ObservableCollection<int> _anomaliesTime = new ObservableCollection<int> { };
@@ -102,12 +102,11 @@ namespace FlightGearProject.Models
             string name = data + "," + corData;
             for (int i = 0; i < Draw.Count(); i++)
             {
-                if (Draw.ContainsKey(name))
-                {
+                if (Draw.ContainsKey(name)){
                     for (int j = 0; j < Draw[name].Count(); j++)
                     {
                         DrawPoints.Add(new DataPoint(ShellViewModel.SplitToDouble(Draw[name][j], 0), ShellViewModel.SplitToDouble(Draw[name][j], 1)));
-                    }
+                    }                    
                 }
             }
         }
@@ -147,12 +146,12 @@ namespace FlightGearProject.Models
             // get AR
             var get_ar = algo.GetMethod("getAR"); //method name
             System.Collections.Generic.List<string> ar = (System.Collections.Generic.List<string>)get_ar.Invoke(ad, new object[] { });
-            Anomalies = ar;
+            Anomalies = new List<string>(ar);
 
             // fun for graph
             var getDraw = algo.GetMethod("getDraw"); //method name - Anomaly Detector // method
             System.Collections.Generic.Dictionary<String, List<String>> drawPoints = (System.Collections.Generic.Dictionary<String, List<String>>)getDraw.Invoke(ad, new object[] { }); // result            
-            Draw = new Dictionary<String, List<String>>(drawPoints);
+            Draw = new Dictionary<String, List<String>>(drawPoints); 
         }
     }
 
