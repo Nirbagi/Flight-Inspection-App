@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="FlightGearProject.Views.GraphsView"
+<UserControl x:Class="FlightGearProject.Views.GraphsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -62,7 +62,7 @@
                 <oxy:Plot Grid.Column="6" Grid.Row="0" Grid.RowSpan="3" Title="Correlated Features" TitleFontSize="10" MinHeight="225" MinWidth="225">
                     <oxy:Plot.Series>
                         <oxy:ScatterSeries MarkerType="Circle" MarkerSize="2" MarkerFill="Black" ItemsSource="{Binding Path= RealData}"/>
-                        <oxy:ScatterSeries MarkerType="Circle" MarkerSize="2" MarkerFill="Black" ItemsSource="{Binding Path= AnomalyData}"/>
+                        <oxy:ScatterSeries MarkerType="Circle" MarkerSize="1" MarkerFill="Red" ItemsSource="{Binding Path= AnomalyData}"/>
                         <oxy:LineSeries MarkerFill="Black" ItemsSource="{Binding Path= RegLine}"/>
                         <oxy:LineSeries MarkerFill="Green" ItemsSource="{Binding Path= RegLine30}"/>
                     </oxy:Plot.Series>
