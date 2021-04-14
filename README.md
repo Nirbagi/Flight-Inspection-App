@@ -80,9 +80,7 @@ Our code is divided into three main parts, the first part is the `<Model>` In th
 Due to time constraints we are unable to show the linear line of user story 9. But the data is obtained in the system.
 This can be seen from the debugging of the system. Attached are photos of debugging
 
-<img src="https://user-images.githubusercontent.com/73064092/114761029-af693780-9d68-11eb-8854-adf3652afc48.png"  width="500">
-<img src="https://user-images.githubusercontent.com/73064092/114761056-b7c17280-9d68-11eb-8964-4f6c606ff3d9.png"  width="500">
-<img src="https://user-images.githubusercontent.com/73064092/114761090-bee88080-9d68-11eb-9fda-0a4dc0d2ca41.png"  width="500">
+<img src="https://user-images.githubusercontent.com/73064092/114761517-3fa77c80-9d69-11eb-843b-2d7bd00c8884.png"  width="500">
 
 
 
