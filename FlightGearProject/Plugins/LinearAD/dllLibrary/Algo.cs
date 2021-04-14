@@ -329,23 +329,22 @@ namespace dllLibrary
             return false;
         }
 
-        public List<String> getDraw(string f1, string f2)
+        public Dictionary<String, List<String>> getDraw()
         {
-            List<String> drawPoints = new List<String>();
+            Dictionary<String, List<String>> drawPoints = new Dictionary<String, List<String>>();
+            List<String> temp = new List<String>();
+            string tuple = "";
             for (int i = 0; i < cf.Count; i++)
             {
-                if ((stringCompare(cf[i].feature1, f1) && stringCompare(cf[i].feature2, f2)) 
-                    || (stringCompare(cf[i].feature2, f1) && stringCompare(cf[i].feature1, f2))) //check the first feature name
+                temp.Clear();
+                tuple = cf[i].feature1 + "," + cf[i].feature2;
+                for(int j = 0; j < cf[i].draw.Count; j++)
                 {
-                    for(int j = 0; j < cf[i].draw.Count; j++)
-                    {
-
-                        drawPoints.Add(cf[i].draw[j].x.ToString() + "," + cf[i].draw[j].y.ToString());
-                    }
+                    temp.Add(cf[i].draw[j].x.ToString() + "," + cf[i].draw[j].y.ToString());
                 }
+                drawPoints.Add(tuple, temp);
             }
             return drawPoints;
-
         }
 
         float findXmin(List<float> fd)

@@ -1,0 +1,4 @@
+C:\Users\barsh\source\repos\shana2\metkatem2\dllLibrary\dllLibrary\bin\Debug\dllLibrary.dll
+C:\Users\barsh\source\repos\shana2\metkatem2\dllLibrary\dllLibrary\bin\Debug\dllLibrary.pdb
+C:\Users\barsh\source\repos\shana2\metkatem2\dllLibrary\dllLibrary\obj\Debug\dllLibrary.dll
+C:\Users\barsh\source\repos\shana2\metkatem2\dllLibrary\dllLibrary\obj\Debug\dllLibrary.pdb
