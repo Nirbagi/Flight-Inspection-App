@@ -16,11 +16,8 @@ namespace FlightGearProject.ViewModels
         private IEventAggregator _events;
         private string _data = null;
         private string _cordata = null;
-        private int _count = 0;
-        private bool _is30 = false;
-        private int _prev_loc = 0;
-        private String _prev_feat = "";
-        private int _dot;
+        private int _anomalyLocation = -1;
+        private int _prevLoc = -1;
 
         List<DataPoint> _Points;
         public List<DataPoint> Points { get { return _Points; } }
@@ -43,8 +40,11 @@ namespace FlightGearProject.ViewModels
         //the points for the graph of the correlated feature
         private ObservableCollection<ScatterPoint> _anomalyData = new ObservableCollection<ScatterPoint> { };
         
+        //the points for the graph of the correlated feature
+        private ObservableCollection<int> _anomalyDataLocation = new ObservableCollection<int> { 100, 200 };
+        
         // The list that contains all the features
-        public List<string> _flightDataNames = new List<string>
+        private List<string> _flightDataNames = new List<string>
         {
              "aileron", "elevator","rudder", "flaps", "slats", "speedbrake", "throttle", "throttle1",
              "engine-pump", "engine-pump1", "electric-pump", "electric-pump1", "external-power",
@@ -60,17 +60,16 @@ namespace FlightGearProject.ViewModels
              "vertical-speed-indicator_indicated-speed-fpm", "engine_rpm"
         };
 
-
-        public int Dot
+        // The list of correlated features
+        private List<string> _flightDataCorNames = new List<string>
         {
-            get { return this._dataPoints.Count(); }
-            set
-            {
-                this._dot = value;
-                NotifyOfPropertyChange(() => Dot);
-            }
-        }
-
+            null, null, null, null, null, null, "engine_rpm",null, null, null, null, null, null,
+            null, null, null, null, "attitude-indicator_internal-roll-deg", "attitude-indicator_internal-pitch-deg",
+            "indicated-heading-deg",null,"airspeed-indicator_indicated-speed-kt",null, "gps_indicated-vertical-speed",
+            "gps_indicated-ground-speed-kt","altimeter_pressure-alt-ft","encoder_pressure-alt-ft",
+            null, null, null, null, "encoder_pressure-alt-ft","gps_indicated-altitude-ft","gps_indicated-altitude-ft",
+            null, null, null, null, null, null,null, null, null };        
+        
         //CTOR
         public GraphsViewModel(IEventAggregator events)
         {
@@ -94,6 +93,18 @@ namespace FlightGearProject.ViewModels
             set
             { _flightDataNames = value; }
         }
+        public List<string> FlightDataCorNames
+        {
+            get
+            {
+                return _flightDataCorNames;
+            }
+            private set
+            {
+                _flightDataCorNames = value;
+                NotifyOfPropertyChange(() => FlightDataCorNames);
+            }
+        }
         public ObservableCollection<ScatterPoint> AnomalyData
         {
             get
@@ -102,6 +113,28 @@ namespace FlightGearProject.ViewModels
             {
                 _anomalyData = value;
                 NotifyOfPropertyChange(() => AnomalyData);
+            }
+        }
+        public int AnomalyLocation
+        {
+            get { return _anomalyLocation; }
+            set
+            {
+                _anomalyLocation = value;
+                NotifyOfPropertyChange(() => AnomalyLocation);
+            }
+        }
+        public ObservableCollection<int> AnomalyDataLocation
+        {
+            get
+            {
+                return _anomalyDataLocation;
+            }
+            set
+            {
+                _anomalyDataLocation = value;
+                NotifyOfPropertyChange(() => AnomalyDataLocation);
+
             }
         }
         public ObservableCollection<ScatterPoint> RealData
@@ -135,24 +168,24 @@ namespace FlightGearProject.ViewModels
                 NotifyOfPropertyChange(() => RegLine30);
             }
         }
-        public ObservableCollection<DataPoint> dataPoints
+        public ObservableCollection<DataPoint> DataPoints
         {
             get
             { return _dataPoints; }
             set
             {
                 _dataPoints = value;
-                NotifyOfPropertyChange(() => dataPoints);
+                NotifyOfPropertyChange(() => DataPoints);
             }
         }
-        public ObservableCollection<DataPoint> corDataPoints
+        public ObservableCollection<DataPoint> CorDataPoints
         {
             get
             { return _corDataPoints; }
             set
             {
                 _corDataPoints = value;
-                NotifyOfPropertyChange(() => corDataPoints);
+                NotifyOfPropertyChange(() => CorDataPoints);
             }
         }
         public String vm_data
@@ -161,8 +194,17 @@ namespace FlightGearProject.ViewModels
             set
             {
                 _data = value;
-                //The dataPoints property will be set to a List<DataPoint> of timer and value
-                dataPoints.Clear();
+                if (value != null)
+                {
+                    vm_cordata = FlightDataCorNames[FlightDataNames.IndexOf(vm_data)];
+                }
+                //Lists of points will be set to a List<DataPoint> of timer and value
+                DataPoints.Clear();
+                RegLine.Clear();
+                RegLine30.Clear();
+                RealData.Clear();
+                //AnomalyData.Clear();
+                //AnomalyDataLocation.Clear();
                 NotifyOfPropertyChange(() => vm_data);
             }
         }
@@ -171,9 +213,8 @@ namespace FlightGearProject.ViewModels
             get { return _cordata; }
             set
             {
-                //_cordata = m.cordata(this.vm_data);
-                //_regLine = m.getPointsReg(vm_data, vm_cordata);
-                corDataPoints.Clear();
+                _cordata = value;
+                CorDataPoints.Clear();
                 NotifyOfPropertyChange(() => vm_cordata);
 
             }
@@ -185,28 +226,29 @@ namespace FlightGearProject.ViewModels
         {
             double data_val = 0;
             double cor_data_val = 0;
-            int location = message.CsvLineIndex;
+            int location = message.CsvLineIndex;            
             if (!String.IsNullOrEmpty(vm_data))
             {
-                // if playing backwards remove point
-                if (!message.FBFlag && dataPoints.Count() != 0)
-                    dataPoints.RemoveAt(dataPoints.Count() - 1);
+                if ((_prevLoc != -1) && ((_prevLoc > location + 10) || (_prevLoc < location - 10)))
+                    DataPoints.Clear();
+
                 else
                 {
                     data_val = ShellViewModel.SplitToDouble(message.CurLine, FlightDataNames.IndexOf(vm_data));
-                    dataPoints.Add(new DataPoint(location, data_val));
+                    DataPoints.Add(new DataPoint(location, data_val));
                 }
 
             }
             if (!String.IsNullOrEmpty(vm_cordata))
             {
-                // if playing backwards remove point
-                if (!message.FBFlag && dataPoints.Count() != 0)
-                    corDataPoints.RemoveAt(corDataPoints.Count());
+                if ((_prevLoc != -1) && ((_prevLoc > location + 10) || (_prevLoc < location - 10)))
+                {
+                    CorDataPoints.Clear();
+                }
                 else
                 {
                     cor_data_val = ShellViewModel.SplitToDouble(message.CurLine, FlightDataNames.IndexOf(vm_cordata));
-                    corDataPoints.Add(new DataPoint(location, cor_data_val));
+                    CorDataPoints.Add(new DataPoint(location, cor_data_val));
                 }
             }
             if (!String.IsNullOrEmpty(vm_data) && !String.IsNullOrEmpty(vm_cordata))
@@ -235,6 +277,7 @@ namespace FlightGearProject.ViewModels
                     RegLine.RemoveAt(0);
                 }
             }
-        }            
+            _prevLoc = location;
+        }
     }
 }

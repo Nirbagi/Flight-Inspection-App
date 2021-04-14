@@ -133,10 +133,7 @@ namespace FlightGearProject.ViewModels
                 SimClient.CsvLineNum = (int)(value * SimClient.VideoSize) / 100;
                 NotifyOfPropertyChange(() => ProgressElapsed);
                 // update Graphs Data
-                if (cur < value)
-                    _events.PublishOnUIThread(new GraphEvent(SimClient.FileLines[SimClient.CsvLineNum], SimClient.CsvLineNum, true));
-                else
-                    _events.PublishOnUIThread(new GraphEvent(SimClient.FileLines[SimClient.CsvLineNum], SimClient.CsvLineNum, false));                                
+                _events.PublishOnUIThread(new GraphEvent(SimClient.FileLines[SimClient.CsvLineNum], SimClient.CsvLineNum));
             }
         }    
         public bool AlreadyPlaying
@@ -330,10 +327,9 @@ namespace FlightGearProject.ViewModels
         {
             SimClient.CsvLineNum -= 50;
             StopUpdateGraph = false;
-            // Update GraphsVM
-            for (int i = 0; i < 5; i++)
+            // Update GraphsVM            
                 _events.PublishOnUIThread(new GraphEvent(SimClient.FileLines[SimClient.CsvLineNum],
-                    SimClient.CsvLineNum, false));
+                    SimClient.CsvLineNum));
             StopUpdateGraph = true;
         }
 
@@ -341,9 +337,8 @@ namespace FlightGearProject.ViewModels
         {
             SimClient.CsvLineNum += 50;
             // Update GraphsVM
-            for (int i = 0; i < 5; i++)
                 _events.PublishOnUIThread(new GraphEvent(SimClient.FileLines[SimClient.CsvLineNum],
-                 SimClient.CsvLineNum, SimClient.ForwardBackwardFlag));
+                 SimClient.CsvLineNum));
         }
         
         // Stops the playback and return to the beggining of the simulation
@@ -500,7 +495,12 @@ namespace FlightGearProject.ViewModels
             {
                 if (SimClient.PauseFlag || StopUpdateGraph)
                     continue;
-                _events.PublishOnUIThread(new GraphEvent(SimClient.FileLines[SimClient.CsvLineNum], SimClient.CsvLineNum, SimClient.ForwardBackwardFlag));
+                _events.PublishOnUIThread(new GraphEvent(SimClient.FileLines[SimClient.CsvLineNum], SimClient.CsvLineNum));
+                if (Graphs.AnomalyLocation != -1)
+                {
+                    SimClient.CsvLineNum = Graphs.AnomalyLocation;
+                    Graphs.AnomalyLocation = -1;
+                }
                 Thread.Sleep((int)(1000 / VideoSpeed));
             }
         }

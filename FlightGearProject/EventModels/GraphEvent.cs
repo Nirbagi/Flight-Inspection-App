@@ -5,13 +5,11 @@
     {
         public string CurLine { get; set; }
         public int CsvLineIndex { get; set; }
-        public bool FBFlag { get; set; }
 
-        public GraphEvent(string acurLine, int index, bool fb)
+        public GraphEvent(string acurLine, int index)
         {
             CurLine = acurLine;
             CsvLineIndex = index;
-            FBFlag = fb;
         }
     }
 }
