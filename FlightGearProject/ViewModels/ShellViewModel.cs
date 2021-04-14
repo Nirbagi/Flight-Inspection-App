@@ -9,8 +9,8 @@ namespace FlightGearProject.ViewModels
     public class ShellViewModel : Conductor<Screen>.Collection.AllActive, IHandle<SetupEvent>, IHandle<ADSetupEvent>
     {
         /****Columns of various flight properties in the given CSV file****/
-        public enum FlightData 
-        {            
+        public enum FlightData
+        {
             aileron = 0,
             elevator = 1,
             rudder = 2,
@@ -38,8 +38,8 @@ namespace FlightGearProject.ViewModels
         private FGClientModel _simClient = new FGClientModel();
         private AnomalyDetectionModel _aDAlgo = new AnomalyDetectionModel();
         private bool _isClientConnected = true;
-        private float _progressElapsed = 0;                
-        private bool _updateTimeRunning = false;           
+        private float _progressElapsed = 0;
+        private bool _updateTimeRunning = false;
         private int _remainingSiminSecs = 0;
         private int _simTotalSeconds = 0;
         private int _simTotalMins = 0;
@@ -47,7 +47,7 @@ namespace FlightGearProject.ViewModels
         private int _elapsedTotalSeconds = 0;
         private int _elapsedTotalMins = 0;
         private int _elapsedTotalHours = 0;
-       
+
         // public setters/getters to private members
         public SetupViewModel ClientSetup
         {
@@ -79,8 +79,8 @@ namespace FlightGearProject.ViewModels
         public ADSetupViewModel ADSetup
         {
             get { return _aDSetup; }
-            set 
-            { 
+            set
+            {
                 _aDSetup = value;
                 NotifyOfPropertyChange(() => ADSetup);
             }
@@ -88,8 +88,8 @@ namespace FlightGearProject.ViewModels
         public BindableCollection<float> VideoSpeeds
         {
             get { return _videoSpeeds; }
-            set 
-            { 
+            set
+            {
                 _videoSpeeds = value;
                 NotifyOfPropertyChange(() => VideoSpeeds);
             }
@@ -122,12 +122,12 @@ namespace FlightGearProject.ViewModels
                 _isClientConnected = value;
                 NotifyOfPropertyChange(() => IsClientConnected);
             }
-        }        
+        }
         public float ProgressElapsed
         {
             get { return _progressElapsed; }
             set
-            {                
+            {
                 float cur = _progressElapsed;
                 _progressElapsed = value;
                 SimClient.CsvLineNum = (int)(value * SimClient.VideoSize) / 100;
@@ -135,7 +135,7 @@ namespace FlightGearProject.ViewModels
                 // update Graphs Data
                 _events.PublishOnUIThread(new GraphEvent(SimClient.FileLines[SimClient.CsvLineNum], SimClient.CsvLineNum));
             }
-        }    
+        }
         public bool AlreadyPlaying
         {
             get { return _updateTimeRunning; }
@@ -204,7 +204,7 @@ namespace FlightGearProject.ViewModels
         /**********************************************************************************/
 
         /*********************public members***********************/
-        public bool SetupAlreadyOpen { get; set; } = false;        
+        public bool SetupAlreadyOpen { get; set; } = false;
         public bool JoystickAlreadyOpen { get; set; } = false;
         public bool GraphsAlreadyOpen { get; set; } = false;
         /**********************************************************/
@@ -222,7 +222,7 @@ namespace FlightGearProject.ViewModels
                 _canLoadSetup = value;
                 NotifyOfPropertyChange(() => CanLoadSetup);
             }
-        }        
+        }
         public bool CanStartSimClient
         {
             get { return _canStartSimClient; }
@@ -231,7 +231,7 @@ namespace FlightGearProject.ViewModels
                 _canStartSimClient = value;
                 NotifyOfPropertyChange(() => CanStartSimClient);
             }
-        }        
+        }
         public bool CanLoadJoystick
         {
             get { return _canLoadJoystick; }
@@ -240,7 +240,7 @@ namespace FlightGearProject.ViewModels
                 _canLoadJoystick = value;
                 NotifyOfPropertyChange(() => CanLoadJoystick);
             }
-        }       
+        }
         public bool CanLoadGraphs
         {
             get { return _canLoadGraphs; }
@@ -286,8 +286,8 @@ namespace FlightGearProject.ViewModels
             CanStartSimClient = false;
             CanLoadSetup = false;
             CanLoadJoystick = true;
-            CanLoadGraphs = true;           
-            RemainingSiminSecs = SimClient.VideoSize / 10;            
+            CanLoadGraphs = true;
+            RemainingSiminSecs = SimClient.VideoSize / 10;
             SimTotalMins = SimClient.VideoSize / 600;
             SimTotalHours = SimClient.VideoSize / 36000;
             SimTotalSeconds = RemainingSiminSecs - (SimTotalMins * 60 + SimTotalHours * 3600);
@@ -302,8 +302,8 @@ namespace FlightGearProject.ViewModels
                 SimClient.PauseFlag = false;
                 SimClient.ForwardBackwardFlag = true;
                 await Task.Run(() => SimClient.StartPlayCSV());
-                AlreadyPlaying = false;                
-            }            
+                AlreadyPlaying = false;
+            }
         }
 
         public void PauseSim()
@@ -328,8 +328,8 @@ namespace FlightGearProject.ViewModels
             SimClient.CsvLineNum -= 50;
             StopUpdateGraph = false;
             // Update GraphsVM            
-                _events.PublishOnUIThread(new GraphEvent(SimClient.FileLines[SimClient.CsvLineNum],
-                    SimClient.CsvLineNum));
+            _events.PublishOnUIThread(new GraphEvent(SimClient.FileLines[SimClient.CsvLineNum],
+                SimClient.CsvLineNum));
             StopUpdateGraph = true;
         }
 
@@ -337,10 +337,10 @@ namespace FlightGearProject.ViewModels
         {
             SimClient.CsvLineNum += 50;
             // Update GraphsVM
-                _events.PublishOnUIThread(new GraphEvent(SimClient.FileLines[SimClient.CsvLineNum],
-                 SimClient.CsvLineNum));
+            _events.PublishOnUIThread(new GraphEvent(SimClient.FileLines[SimClient.CsvLineNum],
+             SimClient.CsvLineNum));
         }
-        
+
         // Stops the playback and return to the beggining of the simulation
         public void StopSimulation()
         {
@@ -382,17 +382,17 @@ namespace FlightGearProject.ViewModels
             }
         }
 
-        public void LoadADSetup()
+        public async Task LoadADSetup()
         {
             ADSetup = new ADSetupViewModel(_events, ADAlgo.DllPath, ADAlgo.TrainCSV, ADAlgo.TestFlightCSV);
             _manager.ShowWindow(ADSetup);
-  
-            /*await Task.Run(() =>
-            {
-                while (!StopUpdateGraph)
-                    continue;
-            });
-            ADAlgo.ADLoadDLL();*/
+            /*
+                      await Task.Run(() =>
+                      {
+                          while (!StopUpdateGraph)
+                              continue;
+                      });
+                      ADAlgo.ADLoadDLL();*/
         }
 
         public async Task LoadJoystick()
@@ -487,7 +487,7 @@ namespace FlightGearProject.ViewModels
                 Thread.Sleep((int)(1000 / VideoSpeed));
             }
         }
-        
+
         // this function update GraphsVM for the correct state
         public void UpdateGraphs()
         {
@@ -529,6 +529,7 @@ namespace FlightGearProject.ViewModels
             DeactivateItem(ADSetup, true);
             ADSetup = null;
             StopUpdateGraph = true;
+            ADAlgo.ADLoadDLL();
         }
         /*******************************************************************************/
     }

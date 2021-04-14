@@ -13,6 +13,7 @@ namespace FlightGearProject.ViewModels
         public String DllPath { get; set; }
         public String TrainFlightCSV { get; set; }
         public String TestFlightCSV { get; set; }
+
         /*************************************************************/
 
         public ADSetupViewModel(IEventAggregator events, string dll, string train, string test)
@@ -25,7 +26,7 @@ namespace FlightGearProject.ViewModels
 
         public void ADSaveClicked()
         {
-            _events.PublishOnUIThread(new ADSetupEvent(DllPath, TrainFlightCSV, TestFlightCSV));
+            _events.PublishOnUIThread(new ADSetupEvent(DllPath, TrainFlightCSV, TestFlightCSV, true));
             TryClose();
         }
     }

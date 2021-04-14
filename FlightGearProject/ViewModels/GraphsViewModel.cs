@@ -11,8 +11,8 @@ using System.Linq;
 namespace FlightGearProject.ViewModels
 {
     public class GraphsViewModel : Screen, IHandle<GraphEvent>
-    {          
-        FromDll m;
+    {
+        AnomalyDetectionModel m;
         private IEventAggregator _events;
         private string _data = null;
         private string _cordata = null;
@@ -39,10 +39,10 @@ namespace FlightGearProject.ViewModels
 
         //the points for the graph of the correlated feature
         private ObservableCollection<ScatterPoint> _anomalyData = new ObservableCollection<ScatterPoint> { };
-        
+
         //the points for the graph of the correlated feature
         private ObservableCollection<int> _anomalyDataLocation = new ObservableCollection<int> { 100, 200 };
-        
+
         // The list that contains all the features
         private List<string> _flightDataNames = new List<string>
         {
@@ -68,13 +68,14 @@ namespace FlightGearProject.ViewModels
             "indicated-heading-deg",null,"airspeed-indicator_indicated-speed-kt",null, "gps_indicated-vertical-speed",
             "gps_indicated-ground-speed-kt","altimeter_pressure-alt-ft","encoder_pressure-alt-ft",
             null, null, null, null, "encoder_pressure-alt-ft","gps_indicated-altitude-ft","gps_indicated-altitude-ft",
-            null, null, null, null, null, null,null, null, null };        
-        
+            null, null, null, null, null, null,null, null, null };
+
         //CTOR
         public GraphsViewModel(IEventAggregator events)
         {
             _events = events;
             _events.Subscribe(this);
+            this.m = new AnomalyDetectionModel();
             this._Points = new List<DataPoint>
             {
                 new DataPoint(0, 4),
@@ -193,18 +194,21 @@ namespace FlightGearProject.ViewModels
             get { return _data; }
             set
             {
+                DataPoints.Clear();
+                RegLine.Clear();
+                RegLine30.Clear();
+                RealData.Clear();
+                AnomalyData.Clear();
+                AnomalyDataLocation.Clear();
+
                 _data = value;
+
                 if (value != null)
                 {
                     vm_cordata = FlightDataCorNames[FlightDataNames.IndexOf(vm_data)];
                 }
                 //Lists of points will be set to a List<DataPoint> of timer and value
-                DataPoints.Clear();
-                RegLine.Clear();
-                RegLine30.Clear();
-                RealData.Clear();
-                //AnomalyData.Clear();
-                //AnomalyDataLocation.Clear();
+
                 NotifyOfPropertyChange(() => vm_data);
             }
         }
@@ -213,8 +217,19 @@ namespace FlightGearProject.ViewModels
             get { return _cordata; }
             set
             {
-                _cordata = value;
                 CorDataPoints.Clear();
+
+                _cordata = value;
+
+                if (value != null)
+                {
+                    m.DrawList(vm_data, value);
+                    RegLine = m.DrawPoints;
+                    m.anomaliesList(vm_data, value);
+                    AnomalyData = m.AnomaliesPoints;
+                    AnomalyDataLocation = m.AnomaliesTime;
+                }
+
                 NotifyOfPropertyChange(() => vm_cordata);
 
             }
@@ -226,7 +241,7 @@ namespace FlightGearProject.ViewModels
         {
             double data_val = 0;
             double cor_data_val = 0;
-            int location = message.CsvLineIndex;            
+            int location = message.CsvLineIndex;
             if (!String.IsNullOrEmpty(vm_data))
             {
                 if ((_prevLoc != -1) && ((_prevLoc > location + 10) || (_prevLoc < location - 10)))
@@ -254,15 +269,11 @@ namespace FlightGearProject.ViewModels
             if (!String.IsNullOrEmpty(vm_data) && !String.IsNullOrEmpty(vm_cordata))
             {
                 ScatterPoint p = new ScatterPoint(data_val, cor_data_val);
-                /*
-                if (m.getAnomalyData(vm_data, vm_cordata).Contains(p))
-                {
-                    AnomalyData.Add(p);
-                } else
+
+                if (!AnomalyData.Contains(p))
                 {
                     RealData.Add(new ScatterPoint(data_val, cor_data_val));
                 }
-                */
                 for (int i = 0; i < RegLine.Count(); i++)
                 {
                     if (RegLine[i].X == data_val)

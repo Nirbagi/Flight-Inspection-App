@@ -8,12 +8,13 @@ namespace FlightGearProject.EventModels
         public String DllPath { get; set; }
         public String TrainCsv { get; set; }
         public String TestFlightCsv { get; set; }
-
-        public ADSetupEvent(string dll, string train, string test)
+        public bool Saved { get; set; }
+        public ADSetupEvent(string dll, string train, string test, bool s)
         {
             DllPath = dll;
             TrainCsv = train;
             TestFlightCsv = test;
+            Saved = s;
         }
     }
 }
