@@ -76,12 +76,6 @@ Our code is divided into three main parts, the first part is the `<Model>` In th
 ## UML diagram
 ![image](https://user-images.githubusercontent.com/73064092/114601586-57fe9500-9c9e-11eb-97f2-479d84dec26f.png)
 
-## Oops… Known problems
-Due to time constraints we are unable to show the linear line of user story 9. But the data is obtained in the system.
-This can be seen from the debugging of the system. Attached are photos of debugging
-
-<img src="https://user-images.githubusercontent.com/73064092/114761517-3fa77c80-9d69-11eb-843b-2d7bd00c8884.png"  width="500">
-
 
 
 :world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:  :compass:	:world_map:
