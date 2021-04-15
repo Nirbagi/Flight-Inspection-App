@@ -15,8 +15,8 @@ The application presents the pilot all of the recorded flight's data in various 
 It allows the pilot to control the speed of the playback (slower or faster) and perform an in-depth analysis of data relative to the pilot's other flights: Steering position, speed, direction of flight, altitude, yaw and roll indices, pitch, perform corrosion relative to other flights, load algorithms that study the information, etc ...
 
 ## :film_projector:	 Demonstration Video
-- :fist_right: [------->Link](https://youtu.be/6b5pHP8yscw)
-- :fist_right: After preparing the first video, we managed with many efforts to fix the bug we presented at the end of the video, so attach an extension video that shows the topic of the graphs without the bug [------->Link to the extension](https://youtu.be/yLttdREaXIk)
+- :fist_right: [------->Link](https://youtu.be/rmG7bNQnbgo)
+
 
 
 ## Special features
