@@ -71,7 +71,7 @@ Our code is divided into three main parts, the first part is the `<Model>` In th
 <img src="https://user-images.githubusercontent.com/73064092/114605580-e6751580-9ca2-11eb-8fcd-a40cbbefb9ea.png"  width="500">
 
 - [x] To load a flight to compare in the algorithm click ADsetup:
-<img src="https://user-images.githubusercontent.com/73064092/114604535-a95c5380-9ca1-11eb-8378-77069b9e9c2f.png"  width="500">
+<img src="https://user-images.githubusercontent.com/73064092/114891869-ee54c700-9e14-11eb-8430-e6cbdcd6afbb.png"  width="500">
 
 
 ## UML diagram
