@@ -16,6 +16,7 @@ It allows the pilot to control the speed of the playback (slower or faster) and 
 
 ## :film_projector:	 Demonstration Video
 :fist_right: [------->Link](https://youtu.be/6b5pHP8yscw)
+:fist_right: After preparing the first video, we managed with many efforts to fix the bug we presented at the end of the video, so attach an extension video that shows the topic of the graphs without the bug [------->Link to the extension](https://youtu.be/yLttdREaXIk)
 
 
 ## Special features
